@@ -222,7 +222,7 @@ namespace lfg
         sLFGMgr->LeaveLfg(guid);
         sLFGMgr->LeaveAllLfgQueues(guid, true, gguid);
         sLFGMgr->SetGroup(guid, ObjectGuid::Empty);
-        uint8 players = sLFGMgr->RemovePlayerFromGroup(gguid, guid);
+        //uint8 players = sLFGMgr->RemovePlayerFromGroup(gguid, guid);
 
         // pussywizard: after all necessary actions handle raid browser
         // pussywizard: already done above
@@ -245,11 +245,11 @@ namespace lfg
         if (Player* player = ObjectAccessor::FindConnectedPlayer(guid))
         {
             // xinef: fixed dungeon deserter
-            if (method != GROUP_REMOVEMETHOD_KICK_LFG && state != LFG_STATE_FINISHED_DUNGEON &&
+            /*if (method != GROUP_REMOVEMETHOD_KICK_LFG && state != LFG_STATE_FINISHED_DUNGEON &&
                     player->HasAura(LFG_SPELL_DUNGEON_COOLDOWN) && players >= LFG_GROUP_KICK_VOTES_NEEDED)
             {
                 player->AddAura(LFG_SPELL_DUNGEON_DESERTER, player);
-            }
+            }*/
             //else if (state == LFG_STATE_BOOT)
             // Update internal kick cooldown of kicked
 

@@ -639,9 +639,9 @@ void Pet::setDeathState(DeathState s, bool /*despawn = false*/)                 
             RemoveUnitFlag(UNIT_FLAG_SKINNABLE);
 
             //lose happiness when died and not in BG/Arena
-            MapEntry const* mapEntry = sMapStore.LookupEntry(GetMapId());
+            /*MapEntry const* mapEntry = sMapStore.LookupEntry(GetMapId());
             if (!mapEntry || (mapEntry->map_type != MAP_ARENA && mapEntry->map_type != MAP_BATTLEGROUND))
-                ModifyPower(POWER_HAPPINESS, -HAPPINESS_LEVEL_SIZE);
+                ModifyPower(POWER_HAPPINESS, -HAPPINESS_LEVEL_SIZE);*/
 
             //SetUnitFlag(UNIT_FLAG_STUNNED);
         }
@@ -845,7 +845,7 @@ void Pet::Update(uint32 diff)
                     }
                 }
 
-                if (getPetType() == HUNTER_PET)
+                /*if (getPetType() == HUNTER_PET)
                 {
                     m_happinessTimer -= diff;
                     if (m_happinessTimer <= int32(0))
@@ -853,7 +853,7 @@ void Pet::Update(uint32 diff)
                         LoseHappiness();
                         m_happinessTimer += PET_LOSE_HAPPINES_INTERVAL;
                     }
-                }
+                }*/
 
                 break;
             }

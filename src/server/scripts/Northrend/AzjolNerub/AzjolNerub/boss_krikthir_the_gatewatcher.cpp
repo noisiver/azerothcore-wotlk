@@ -31,7 +31,7 @@ enum Spells
 
 enum Events
 {
-    EVENT_KRIK_START_WAVE               = 1,
+    EVENT_KRIK_SEND_GROUP               = 1,
     EVENT_KRIK_SUMMON                   = 2,
     EVENT_KRIK_MIND_FLAY                = 3,
     EVENT_KRIK_CURSE                    = 4,
@@ -106,12 +106,7 @@ public:
 
             if (events.Empty() && who->GetPositionZ() < 785.0f)
             {
-                events2.ScheduleEvent(EVENT_KRIK_START_WAVE, 10s);
-                events2.ScheduleEvent(EVENT_KRIK_START_WAVE, 40s);
-                events2.ScheduleEvent(EVENT_KRIK_START_WAVE, 70s);
-                events2.ScheduleEvent(EVENT_KRIK_ENTER_COMBAT, 100s);
                 events2.ScheduleEvent(EVENT_KRIK_CHECK_EVADE, 5s);
-
                 events.ScheduleEvent(EVENT_KRIK_HEALTH_CHECK, 1s);
                 events.ScheduleEvent(EVENT_KRIK_MIND_FLAY, 13s);
                 events.ScheduleEvent(EVENT_KRIK_SUMMON, 17s);
@@ -159,6 +154,14 @@ public:
         void SummonedCreatureDies(Creature* summon, Unit*) override
         {
             summons.Despawn(summon);
+
+            if (summon->GetEntry() == NPC_WATCHER_NARJIL || summon->GetEntry() == NPC_WATCHER_GASHRA || summon->GetEntry() == NPC_WATCHER_SILTHIK)
+            {
+                if (!summons.IsAnyCreatureWithEntryAlive(NPC_WATCHER_NARJIL) && !summons.IsAnyCreatureWithEntryAlive(NPC_WATCHER_GASHRA) && !summons.IsAnyCreatureWithEntryAlive(NPC_WATCHER_SILTHIK))
+                    events2.ScheduleEvent(EVENT_KRIK_ENTER_COMBAT, 1s);
+                else
+                    events2.ScheduleEvent(EVENT_KRIK_SEND_GROUP, 1s);
+            }
         }
 
         void UpdateAI(uint32 diff) override
@@ -166,7 +169,7 @@ public:
             events2.Update(diff);
             switch (events2.ExecuteEvent())
             {
-                case EVENT_KRIK_START_WAVE:
+                case EVENT_KRIK_SEND_GROUP:
                     me->CastCustomSpell(SPELL_SUBBOSS_AGGRO_TRIGGER, SPELLVALUE_MAX_TARGETS, 1, me, true);
                     Talk(SAY_SEND_GROUP);
                     break;
