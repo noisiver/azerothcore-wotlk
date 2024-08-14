@@ -222,7 +222,7 @@ namespace lfg
         sLFGMgr->LeaveLfg(guid);
         sLFGMgr->LeaveAllLfgQueues(guid, true, gguid);
         sLFGMgr->SetGroup(guid, ObjectGuid::Empty);
-        //uint8 players = sLFGMgr->RemovePlayerFromGroup(gguid, guid);
+        uint8 players = sLFGMgr->RemovePlayerFromGroup(gguid, guid);
 
         // pussywizard: after all necessary actions handle raid browser
         // pussywizard: already done above
