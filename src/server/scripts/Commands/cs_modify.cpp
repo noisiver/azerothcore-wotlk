@@ -77,7 +77,8 @@ public:
         static ChatCommandTable morphCommandTable =
         {
             { "reset",          HandleMorphResetCommand,          SEC_MODERATOR,        Console::No },
-            { "target",         HandleMorphTargetCommand,         SEC_MODERATOR,        Console::No }
+            { "target",         HandleMorphTargetCommand,         SEC_MODERATOR,        Console::No },
+            { "mount",          HandleMorphMountCommand,          SEC_MODERATOR,        Console::No }
         };
 
         static ChatCommandTable commandTable =
@@ -408,7 +409,7 @@ public:
 
             if (player->IsInFlight() && checkInFlight)
             {
-                handler->SendErrorMessage(LANG_CHAR_IN_FLIGHT, handler->GetNameLink(player).c_str());
+                handler->SendErrorMessage(LANG_CHAR_IN_FLIGHT, handler->GetNameLink(player));
                 return false;
             }
         }
@@ -798,7 +799,7 @@ public:
 
             if (r >= MAX_REPUTATION_RANK)
             {
-                handler->SendErrorMessage(LANG_COMMAND_FACTION_INVPARAM, rankStr.c_str());
+                handler->SendErrorMessage(LANG_COMMAND_FACTION_INVPARAM, rankStr);
                 return false;
             }
         }
@@ -865,6 +866,21 @@ public:
         }
 
         target->DeMorph();
+        return true;
+    }
+
+    static bool HandleMorphMountCommand(ChatHandler* handler, uint32 displayID)
+    {
+        Player* target = handler->getSelectedPlayerOrSelf();
+
+        if (target->GetTypeId() == TYPEID_PLAYER && handler->HasLowerSecurity(target->ToPlayer())) // check online security
+            return false;
+
+        if (!target->GetAuraEffectsByType(SPELL_AURA_MOUNTED).empty())
+            target->SetUInt32Value(UNIT_FIELD_MOUNTDISPLAYID, displayID);
+        else
+            return false;
+
         return true;
     }
 

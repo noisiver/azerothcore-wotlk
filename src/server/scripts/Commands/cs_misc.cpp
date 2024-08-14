@@ -464,7 +464,7 @@ public:
 
         auto SetCommentatorMod = [&](bool enable)
         {
-            session->SendNotification(enable ? "Commentator mode on" : "Commentator mode off");
+            handler->SendNotification(enable ? "Commentator mode on" : "Commentator mode off");
             session->GetPlayer()->SetCommentator(enable);
         };
 
@@ -508,7 +508,7 @@ public:
 
         auto SetDevMod = [&](bool enable)
         {
-            session->SendNotification(enable ? LANG_DEV_ON : LANG_DEV_OFF);
+            handler->SendNotification(enable ? LANG_DEV_ON : LANG_DEV_OFF);
             session->GetPlayer()->SetDeveloper(enable);
             sScriptMgr->OnHandleDevCommand(handler->GetSession()->GetPlayer(), enable);
         };
@@ -627,7 +627,7 @@ public:
 
         if (object->GetTransport())
         {
-            handler->PSendSysMessage("Transport offset: %.2f, %.2f, %.2f, %.2f", object->m_movementInfo.transport.pos.GetPositionX(), object->m_movementInfo.transport.pos.GetPositionY(), object->m_movementInfo.transport.pos.GetPositionZ(), object->m_movementInfo.transport.pos.GetOrientation());
+            handler->PSendSysMessage("Transport offset: {0:.2f}, {0:.2f}, {0:.2f}, {0:.2f}", object->m_movementInfo.transport.pos.GetPositionX(), object->m_movementInfo.transport.pos.GetPositionY(), object->m_movementInfo.transport.pos.GetPositionZ(), object->m_movementInfo.transport.pos.GetOrientation());
         }
 
         return true;
