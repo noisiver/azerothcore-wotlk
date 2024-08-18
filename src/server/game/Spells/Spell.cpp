@@ -20,6 +20,7 @@
 #include "BattlefieldMgr.h"
 #include "Battleground.h"
 #include "BattlegroundIC.h"
+#include "CharmInfo.h"
 #include "CellImpl.h"
 #include "Common.h"
 #include "ConditionMgr.h"
@@ -3738,8 +3739,9 @@ void Spell::cancel(bool bySelf)
                         if (Unit* unit = m_caster->GetGUID() == ihit->targetGUID ? m_caster : ObjectAccessor::GetUnit(*m_caster, ihit->targetGUID))
                             unit->RemoveOwnedAura(m_spellInfo->Id, m_originalCasterGUID, 0, AURA_REMOVE_BY_CANCEL);
 
-                if (m_spellInfo->HasAttribute(SPELL_ATTR0_COOLDOWN_ON_EVENT))
-                    m_caster->ToPlayer()->RemoveSpellCooldown(m_spellInfo->Id, true);
+                if (m_caster->GetTypeId() == TYPEID_PLAYER)
+                    if (m_spellInfo->HasAttribute(SPELL_ATTR0_COOLDOWN_ON_EVENT))
+                        m_caster->ToPlayer()->RemoveSpellCooldown(m_spellInfo->Id, true);
 
                 SendChannelUpdate(0);
                 SendInterrupted(SPELL_FAILED_INTERRUPTED);
@@ -8493,7 +8495,7 @@ void Spell::LoadScripts()
             m_loadedScripts.erase(bitr);
             continue;
         }
-        LOG_DEBUG("spells.aura", "Spell::LoadScripts: Script `{}` for spell `{}` is loaded now", (*itr)->_GetScriptName(), m_spellInfo->Id);
+        LOG_DEBUG("spells.aura", "Spell::LoadScripts: Script `{}` for spell `{}` is loaded now", (*itr)->_GetScriptName()->c_str(), m_spellInfo->Id);
         (*itr)->Register();
         ++itr;
     }
