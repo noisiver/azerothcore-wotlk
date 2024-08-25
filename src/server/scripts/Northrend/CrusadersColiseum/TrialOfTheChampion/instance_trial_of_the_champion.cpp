@@ -867,9 +867,9 @@ public:
                                 c->SetReactState(REACT_AGGRESSIVE);
                                 c->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                                 c->SetImmuneToAll(false);
-                                if( Unit* target = c->SelectNearestTarget(200.0f) )
+                                /*if( Unit* target = c->SelectNearestTarget(200.0f) )
                                     c->AI()->AttackStart(target);
-                                c->AI()->DoZoneInCombat();
+                                c->AI()->DoZoneInCombat();*/
                             }
                         Counter = 0;
                     }
@@ -894,9 +894,9 @@ public:
                                 c->SetReactState(REACT_AGGRESSIVE);
                                 c->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                                 c->SetImmuneToAll(false);
-                                if( Unit* target = c->SelectNearestTarget(200.0f) )
+                                /*if( Unit* target = c->SelectNearestTarget(200.0f) )
                                     c->AI()->AttackStart(target);
-                                c->AI()->DoZoneInCombat();
+                                c->AI()->DoZoneInCombat();*/
                             }
                     }
                     break;
@@ -920,9 +920,9 @@ public:
                                 c->SetReactState(REACT_AGGRESSIVE);
                                 c->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                                 c->SetImmuneToAll(false);
-                                if( Unit* target = c->SelectNearestTarget(200.0f) )
+                                /*if( Unit* target = c->SelectNearestTarget(200.0f) )
                                     c->AI()->AttackStart(target);
-                                c->AI()->DoZoneInCombat();
+                                c->AI()->DoZoneInCombat();*/
                             }
                     }
                     break;
@@ -946,9 +946,9 @@ public:
                                 c->SetReactState(REACT_AGGRESSIVE);
                                 c->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                                 c->SetImmuneToAll(false);
-                                if( Unit* target = c->SelectNearestTarget(200.0f) )
+                                /*if( Unit* target = c->SelectNearestTarget(200.0f) )
                                     c->AI()->AttackStart(target);
-                                c->AI()->DoZoneInCombat();
+                                c->AI()->DoZoneInCombat();*/
                                 c->CastSpell(c, 67865, true); // SPELL_TRAMPLE_AURA
                             }
                     }
@@ -984,9 +984,9 @@ public:
                                 c->SetReactState(REACT_AGGRESSIVE);
                                 c->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                                 c->SetImmuneToAll(false);
-                                if( Unit* target = c->SelectNearestTarget(200.0f) )
+                                /*if( Unit* target = c->SelectNearestTarget(200.0f) )
                                     c->AI()->AttackStart(target);
-                                c->AI()->DoZoneInCombat();
+                                c->AI()->DoZoneInCombat();*/
                                 c->AI()->DoAction(2);
                             }
                     }
@@ -1101,9 +1101,9 @@ public:
                             boss->SetReactState(REACT_AGGRESSIVE);
                             boss->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE);
                             boss->SetImmuneToAll(false);
-                            if( Unit* target = boss->SelectNearestTarget(200.0f) )
-                                boss->AI()->AttackStart(target);
-                            boss->AI()->DoZoneInCombat();
+                            //if( Unit* target = boss->SelectNearestTarget(200.0f) )
+                                //boss->AI()->AttackStart(target);
+                            //boss->AI()->DoZoneInCombat();
                         }
                     }
                     break;
@@ -1234,9 +1234,9 @@ public:
                         {
                             bk->SetReactState(REACT_AGGRESSIVE);
                             bk->ReplaceAllUnitFlags(UNIT_FLAG_NONE);
-                            if( Unit* target = bk->SelectNearestTarget(200.0f) )
-                                bk->AI()->AttackStart(target);
-                            bk->AI()->DoZoneInCombat();
+                            //if( Unit* target = bk->SelectNearestTarget(200.0f) )
+                                //bk->AI()->AttackStart(target);
+                            //bk->AI()->DoZoneInCombat();
                             bk->AI()->DoAction(1);
                         }
                     }
