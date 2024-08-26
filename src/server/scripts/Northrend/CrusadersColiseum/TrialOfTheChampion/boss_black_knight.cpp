@@ -296,11 +296,11 @@ public:
         void JustSummoned(Creature* summon) override
         {
             summons.Summon(summon);
-            if( Unit* target = summon->SelectNearestTarget(200.0f) )
+            /*if( Unit* target = summon->SelectNearestTarget(200.0f) )
             {
                 summon->AI()->AttackStart(target);
                 DoZoneInCombat(summon);
-            }
+            }*/
         }
 
         void KilledUnit(Unit* victim) override
