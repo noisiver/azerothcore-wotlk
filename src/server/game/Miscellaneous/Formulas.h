@@ -116,35 +116,9 @@ namespace Acore::XP
 
     uint32 Gain(Player* player, Unit* unit, bool isBattleGround = false);
 
-    inline float xp_in_group_rate(uint32 count, bool isRaid)
+    inline float xp_in_group_rate(uint32 count, bool /*isRaid*/)
     {
-        float rate;
-
-        if (isRaid)
-        {
-            // FIXME: Must apply decrease modifiers depending on raid size.
-            rate = 1.0f;
-        }
-        else
-        {
-            switch (count)
-            {
-            case 0:
-            case 1:
-            case 2:
-                rate = 1.0f;
-                break;
-            case 3:
-                rate = 1.166f;
-                break;
-            case 4:
-                rate = 1.3f;
-                break;
-            case 5:
-            default:
-                rate = 1.4f;
-            }
-        }
+        float rate = (float)count;
 
         //sScriptMgr->OnGroupRateCalculation(rate, count, isRaid); // pussywizard: optimization
         return rate;
