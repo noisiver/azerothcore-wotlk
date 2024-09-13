@@ -99,7 +99,7 @@ bool ThreatCalcHelper::isValidProcess(Unit* hatedUnit, Unit* hatingUnit, SpellIn
                     (totem->GetEntry() == 5913)) // Tremor Totem
                     return false;
 
-    ASSERT(hatingUnit->GetTypeId() == TYPEID_UNIT);
+    ASSERT(hatingUnit->IsCreature());
 
     return true;
 }
@@ -208,7 +208,7 @@ void HostileReference::updateOnlineStatus()
     // target is no player or not gamemaster
     // target is not in flight
     if (isValid()
-            && (getTarget()->GetTypeId() != TYPEID_PLAYER || !getTarget()->ToPlayer()->IsGameMaster())
+            && (!getTarget()->IsPlayer() || !getTarget()->ToPlayer()->IsGameMaster())
             && !getTarget()->IsInFlight()
             && getTarget()->IsInMap(GetSourceUnit())
             && getTarget()->InSamePhase(GetSourceUnit())
