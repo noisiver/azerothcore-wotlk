@@ -346,6 +346,7 @@ public:
 
     void DoForAllOnlinePlayers(std::function<void(Player*)> exec) override;
 
+    bool IsMapEnabled(uint32 id) override;
 protected:
     void _UpdateGameTime();
     // callback for UpdateRealmCharacters
