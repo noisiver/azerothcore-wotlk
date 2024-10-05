@@ -2177,7 +2177,7 @@ void World::SetInitialWorldSettings()
         {
             MapEntry const* mapEntry = sMapStore.LookupEntry(i);
 
-            if (mapEntry && !mapEntry->Instanceable())
+            if (mapEntry && !mapEntry->Instanceable() && IsMapEnabled(mapEntry->MapID))
             {
                 Map* map = sMapMgr->CreateBaseMap(mapEntry->MapID);
 
@@ -3217,6 +3217,32 @@ uint32 World::GetNextWhoListUpdateDelaySecs()
     t = std::min(t, (uint32)_timers[WUPDATE_5_SECS].GetInterval());
 
     return uint32(std::ceil(t / 1000.0f));
+}
+
+bool World::IsMapEnabled(uint32 id)
+{
+    switch (id)
+    {
+        case 0: // Eastern Kingdoms
+        case 1: // Kalimdor
+        case 369: // Deeprun Tram
+            return true;
+        case 530: // Outland
+            if (sWorld->getIntConfig(CONFIG_EXPANSION) >= EXPANSION_THE_BURNING_CRUSADE)
+            {
+                return true;
+            }
+            break;
+        case 571: // Northrend
+        case 609: // Ebon Hold
+            if (sWorld->getIntConfig(CONFIG_EXPANSION) == EXPANSION_WRATH_OF_THE_LICH_KING)
+            {
+                return true;
+            }
+            break;
+    }
+
+    return false;
 }
 
 CliCommandHolder::CliCommandHolder(void* callbackArg, char const* command, Print zprint, CommandFinished commandFinished)
