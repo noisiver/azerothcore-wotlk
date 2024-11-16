@@ -24,6 +24,7 @@
 #include "GridNotifiers.h"
 #include "MiscPackets.h"
 #include "ObjectMgr.h"
+#include "Progression.h"
 
 class CreatureTextBuilder
 {
@@ -86,6 +87,7 @@ void CreatureTextMgr::LoadCreatureTexts()
     mTextRepeatMap.clear(); //reset all currently used temp texts
 
     WorldDatabasePreparedStatement* stmt = WorldDatabase.GetPreparedStatement(WORLD_SEL_CREATURE_TEXT);
+    stmt->SetData(0, sProgression->GetPatchId());
     PreparedQueryResult result = WorldDatabase.Query(stmt);
 
     if (!result)

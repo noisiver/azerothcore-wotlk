@@ -23,6 +23,7 @@
 #include "Log.h"
 #include "ObjectMgr.h"
 #include "Player.h"
+#include "Progression.h"
 #include "ScriptMgr.h"
 #include "SharedDefines.h"
 #include "SpellInfo.h"
@@ -148,7 +149,7 @@ uint32 LootStore::LoadLootTable()
     Clear();
 
     //                                                  0     1            2               3         4         5             6
-    QueryResult result = WorldDatabase.Query("SELECT Entry, Item, Reference, Chance, QuestRequired, LootMode, GroupId, MinCount, MaxCount FROM {}", GetName());
+    QueryResult result = WorldDatabase.Query("SELECT Entry, Item, Reference, Chance, QuestRequired, LootMode, GroupId, MinCount, MaxCount FROM {} WHERE {} BETWEEN MinPatch AND MaxPatch", GetName(), sProgression->GetPatchId());
 
     if (!result)
         return 0;

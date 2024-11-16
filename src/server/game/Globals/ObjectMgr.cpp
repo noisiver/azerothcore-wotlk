@@ -38,6 +38,7 @@
 #include "MapMgr.h"
 #include "Pet.h"
 #include "PoolMgr.h"
+#include "Progression.h"
 #include "ReputationMgr.h"
 #include "ScriptMgr.h"
 #include "Spell.h"
@@ -537,7 +538,8 @@ void ObjectMgr::LoadCreatureTemplates()
                          "ctm.Chase, ctm.Random, ctm.InteractionPauseTimer, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, ExperienceModifier, RacialLeader, movementId, RegenHealth, mechanic_immune_mask, "
 //                        64                        65           66
                          "spell_school_immune_mask, flags_extra, ScriptName "
-                         "FROM creature_template ct LEFT JOIN creature_template_movement ctm ON ct.entry = ctm.CreatureId ORDER BY entry DESC;");
+                         "FROM creature_template ct LEFT JOIN creature_template_movement ctm ON ct.entry = ctm.CreatureId "
+                         "WHERE ct.Patch=(SELECT max(Patch) FROM creature_template ct2 WHERE ct.entry=ct2.entry AND Patch <= {}) ORDER BY entry DESC;", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -704,6 +706,7 @@ void ObjectMgr::LoadCreatureTemplate(Field* fields, bool triggerHook)
     {
         sScriptMgr->OnAfterDatabaseLoadCreatureTemplates(_creatureTemplateStoreFast);
     }
+
 }
 
 void ObjectMgr::LoadCreatureTemplateModels()
@@ -1274,7 +1277,8 @@ void ObjectMgr::LoadCreatureAddons()
     uint32 oldMSTime = getMSTime();
 
     //                                                0       1       2      3       4       5             6                7
-    QueryResult result = WorldDatabase.Query("SELECT guid, path_id, mount, bytes1, bytes2, emote, visibilityDistanceType, auras FROM creature_addon");
+    QueryResult result = WorldDatabase.Query("SELECT guid, path_id, mount, bytes1, bytes2, emote, visibilityDistanceType, auras FROM creature_addon "
+                                             "WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -2115,7 +2119,8 @@ void ObjectMgr::LoadCreatures()
                          "creature.ScriptName "
                          "FROM creature "
                          "LEFT OUTER JOIN game_event_creature ON creature.guid = game_event_creature.guid "
-                         "LEFT OUTER JOIN pool_creature ON creature.guid = pool_creature.guid");
+                         "LEFT OUTER JOIN pool_creature ON creature.guid = pool_creature.guid "
+                         "WHERE {} BETWEEN creature.MinPatch AND creature.MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -2443,7 +2448,8 @@ void ObjectMgr::LoadGameobjects()
                          //   18
                          "ScriptName "
                          "FROM gameobject LEFT OUTER JOIN game_event_gameobject ON gameobject.guid = game_event_gameobject.guid "
-                         "LEFT OUTER JOIN pool_gameobject ON gameobject.guid = pool_gameobject.guid");
+                         "LEFT OUTER JOIN pool_gameobject ON gameobject.guid = pool_gameobject.guid "
+                         "WHERE {} BETWEEN gameobject.MinPatch AND gameobject.MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -2692,7 +2698,7 @@ void ObjectMgr::LoadItemTemplates()
                          //                                            126                 127                     128            129            130            131         132         133
                          "GemProperties, RequiredDisenchantSkill, ArmorDamageModifier, duration, ItemLimitCategory, HolidayId, ScriptName, DisenchantID, "
                          //                                           134        135            136
-                         "FoodType, minMoneyLoot, maxMoneyLoot, flagsCustom FROM item_template");
+                         "FoodType, minMoneyLoot, maxMoneyLoot, flagsCustom FROM item_template t1 WHERE Patch=(SELECT max(Patch) FROM item_template t2 WHERE t1.entry=t2.entry AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -4252,7 +4258,7 @@ void ObjectMgr::LoadPlayerInfo()
             _playerXPperLevel[level] = 0;
 
         //                                                 0    1
-        QueryResult result  = WorldDatabase.Query("SELECT Level, Experience FROM player_xp_for_level");
+        QueryResult result  = WorldDatabase.Query("SELECT Level, Experience FROM player_xp_for_level t1 WHERE Patch=(SELECT max(Patch) FROM player_xp_for_level t2 WHERE t1.Level=t2.Level AND Patch <= {})", sProgression->GetPatchId());
 
         if (!result)
         {
@@ -4443,7 +4449,7 @@ void ObjectMgr::LoadQuests()
                          "RequiredItemId1, RequiredItemId2, RequiredItemId3, RequiredItemId4, RequiredItemId5, RequiredItemId6, RequiredItemCount1, RequiredItemCount2, RequiredItemCount3, RequiredItemCount4, RequiredItemCount5, RequiredItemCount6, "
                          //  99           100             101             102             103
                          "Unknown0, ObjectiveText1, ObjectiveText2, ObjectiveText3, ObjectiveText4"
-                         " FROM quest_template");
+                         " FROM quest_template q1 WHERE Patch=(SELECT max(Patch) FROM quest_template q2 WHERE q1.ID=q2.ID AND Patch <= {})", sProgression->GetPatchId());
     if (!result)
     {
         LOG_WARN("server.loading", ">> Loaded 0 quests definitions. DB table `quest_template` is empty.");
@@ -4704,7 +4710,7 @@ void ObjectMgr::LoadQuests()
             }
         }
 
-        if (qinfo->RequiredSkillPoints)
+        /*if (qinfo->RequiredSkillPoints)
         {
             if (qinfo->RequiredSkillPoints > sWorld->GetConfigMaxSkillValue())
             {
@@ -4712,7 +4718,7 @@ void ObjectMgr::LoadQuests()
                                  qinfo->GetQuestId(), qinfo->RequiredSkillPoints, sWorld->GetConfigMaxSkillValue());
                 // no changes, quest can't be done for this requirement
             }
-        }
+        }*/
         // else Skill quests can have 0 skill level, this is ok
 
         if (qinfo->RequiredFactionId2 && !sFactionStore.LookupEntry(qinfo->RequiredFactionId2))
@@ -5605,6 +5611,7 @@ void ObjectMgr::LoadWaypointScripts()
         actionSet.insert(itr->first);
 
     WorldDatabasePreparedStatement* stmt = WorldDatabase.GetPreparedStatement(WORLD_SEL_WAYPOINT_DATA_ACTION);
+    stmt->SetData(0, sProgression->GetPatchId());
     PreparedQueryResult result = WorldDatabase.Query(stmt);
 
     if (result)
@@ -6785,7 +6792,8 @@ void ObjectMgr::LoadAccessRequirements()
         _accessRequirementStore.clear();                                  // need for reload case
     }
     //                                                               0       1            2           3          4            5
-    QueryResult access_template_result = WorldDatabase.Query("SELECT id, map_id, difficulty, min_level, max_level, min_avg_item_level FROM dungeon_access_template");
+    QueryResult access_template_result = WorldDatabase.Query("SELECT id, map_id, difficulty, min_level, max_level, min_avg_item_level FROM dungeon_access_template t1 "
+                                                             "WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
     if (!access_template_result)
     {
         LOG_WARN("server.loading", ">> Loaded 0 access requirement definitions. DB table `dungeon_access_template` is empty.");
@@ -6812,7 +6820,7 @@ void ObjectMgr::LoadAccessRequirements()
         ar->reqItemLevel = fields[5].Get<uint16>();
 
         //                                                                              0                 1               2                 3        4         6
-        QueryResult progression_requirements_results = WorldDatabase.Query("SELECT requirement_type, requirement_id, requirement_note, faction, priority, leader_only FROM dungeon_access_requirements where dungeon_access_id = {}", dungeon_access_id);
+        QueryResult progression_requirements_results = WorldDatabase.Query("SELECT requirement_type, requirement_id, requirement_note, faction, priority, leader_only FROM dungeon_access_requirements where dungeon_access_id = {} AND {} BETWEEN MinPatch AND MaxPatch", dungeon_access_id, sProgression->GetPatchId());
         if (progression_requirements_results)
         {
             do
@@ -7354,7 +7362,8 @@ void ObjectMgr::LoadGameObjectTemplateAddons()
     uint32 oldMSTime = getMSTime();
 
     //                                                0       1       2      3        4       5        6        7        8
-    QueryResult result = WorldDatabase.Query("SELECT entry, faction, flags, mingold, maxgold, artkit0, artkit1, artkit2, artkit3 FROM gameobject_template_addon");
+    QueryResult result = WorldDatabase.Query("SELECT entry, faction, flags, mingold, maxgold, artkit0, artkit1, artkit2, artkit3 FROM gameobject_template_addon t1 "
+                                             "WHERE Patch=(SELECT max(Patch) FROM gameobject_template_addon t2 WHERE t1.entry=t2.entry AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -7653,7 +7662,7 @@ void ObjectMgr::LoadReputationOnKill()
     QueryResult result = WorldDatabase.Query("SELECT creature_id, RewOnKillRepFaction1, RewOnKillRepFaction2, "
                          //   3             4             5                   6             7             8                   9
                          "IsTeamAward1, MaxStanding1, RewOnKillRepValue1, IsTeamAward2, MaxStanding2, RewOnKillRepValue2, TeamDependent "
-                         "FROM creature_onkill_reputation");
+                         "FROM creature_onkill_reputation t1 WHERE Patch=(SELECT max(Patch) FROM creature_onkill_reputation t2 WHERE t1.creature_id=t2.creature_id AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -8057,7 +8066,7 @@ void ObjectMgr::LoadQuestRelationsHelper(QuestRelations& map, std::string const&
 
     uint32 count = 0;
 
-    QueryResult result = WorldDatabase.Query("SELECT id, quest, pool_entry FROM {} qr LEFT JOIN pool_quest pq ON qr.quest = pq.entry", table);
+    QueryResult result = WorldDatabase.Query("SELECT id, quest, pool_entry FROM {} qr LEFT JOIN pool_quest pq ON qr.quest = pq.entry WHERE {} BETWEEN qr.MinPatch AND qr.MaxPatch", table, sProgression->GetPatchId());
 
     if (!result)
     {
@@ -9036,7 +9045,7 @@ void ObjectMgr::LoadMailLevelRewards()
     _mailLevelRewardStore.clear();                           // for reload case
 
     //                                                 0        1             2            3
-    QueryResult result = WorldDatabase.Query("SELECT level, raceMask, mailTemplateId, senderEntry FROM mail_level_reward");
+    QueryResult result = WorldDatabase.Query("SELECT level, raceMask, mailTemplateId, senderEntry FROM mail_level_reward t1 WHERE Patch=(SELECT max(Patch) FROM mail_level_reward t2 WHERE t1.level=t2.level AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -9181,9 +9190,9 @@ void ObjectMgr::LoadTrainerSpell()
     // For reload case
     _cacheTrainerSpellStore.clear();
 
-    QueryResult result = WorldDatabase.Query("SELECT b.ID, a.SpellID, a.MoneyCost, a.ReqSkillLine, a.ReqSkillRank, a.ReqLevel, a.ReqSpell FROM npc_trainer AS a "
-                         "INNER JOIN npc_trainer AS b ON a.ID = -(b.SpellID) "
-                         "UNION SELECT * FROM npc_trainer WHERE SpellID > 0");
+    QueryResult result = WorldDatabase.Query("SELECT b.ID, a.SpellID, a.MoneyCost, a.ReqSkillLine, a.ReqSkillRank, a.ReqLevel, a.ReqSpell, a.MinPatch, a.MaxPatch FROM npc_trainer AS a "
+                         "INNER JOIN npc_trainer AS b ON a.ID = -(b.SpellID) WHERE {} BETWEEN a.MinPatch AND a.MaxPatch "
+                         "UNION SELECT * FROM npc_trainer WHERE SpellID > 0 AND {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId(), sProgression->GetPatchId());
 
     if (!result)
     {
@@ -9220,6 +9229,7 @@ int ObjectMgr::LoadReferenceVendor(int32 vendor, int32 item, std::set<uint32>* s
     // find all items from the reference vendor
     WorldDatabasePreparedStatement* stmt = WorldDatabase.GetPreparedStatement(WORLD_SEL_NPC_VENDOR_REF);
     stmt->SetData(0, uint32(item));
+    stmt->SetData(1, sProgression->GetPatchId());
     PreparedQueryResult result = WorldDatabase.Query(stmt);
 
     if (!result)
@@ -9265,7 +9275,7 @@ void ObjectMgr::LoadVendors()
 
     std::set<uint32> skip_vendors;
 
-    QueryResult result = WorldDatabase.Query("SELECT entry, item, maxcount, incrtime, ExtendedCost FROM npc_vendor ORDER BY entry, slot ASC, item, ExtendedCost");
+    QueryResult result = WorldDatabase.Query("SELECT entry, item, maxcount, incrtime, ExtendedCost FROM npc_vendor WHERE {} BETWEEN MinPatch AND MaxPatch ORDER BY entry, slot ASC, item, ExtendedCost", sProgression->GetPatchId());
     if (!result)
     {
         LOG_INFO("server.loading", " ");
@@ -9351,7 +9361,7 @@ void ObjectMgr::LoadGossipMenuItems()
     QueryResult result = WorldDatabase.Query(
                              //      0       1         2           3           4                      5           6              7             8            9         10        11       12
                              "SELECT MenuID, OptionID, OptionIcon, OptionText, OptionBroadcastTextID, OptionType, OptionNpcFlag, ActionMenuID, ActionPoiID, BoxCoded, BoxMoney, BoxText, BoxBroadcastTextID "
-                             "FROM gossip_menu_option ORDER BY MenuID, OptionID");
+                             "FROM gossip_menu_option WHERE {} BETWEEN MinPatch AND MaxPatch ORDER BY MenuID, OptionID", sProgression->GetPatchId());
 
     if (!result)
     {

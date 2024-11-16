@@ -24,6 +24,7 @@
 #include "InstanceScript.h"
 #include "ObjectDefines.h"
 #include "ObjectMgr.h"
+#include "Progression.h"
 #include "ScriptedCreature.h"
 #include "SpellMgr.h"
 
@@ -131,6 +132,7 @@ void SmartAIMgr::LoadSmartAIFromDB()
         mEventMap[i].clear();  //Drop Existing SmartAI List
 
     WorldDatabasePreparedStatement* stmt = WorldDatabase.GetPreparedStatement(WORLD_SEL_SMART_SCRIPTS);
+    stmt->SetData(0, sProgression->GetPatchId());
     PreparedQueryResult result = WorldDatabase.Query(stmt);
 
     if (!result)

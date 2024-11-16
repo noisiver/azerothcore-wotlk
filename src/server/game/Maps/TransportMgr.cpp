@@ -17,6 +17,7 @@
 
 #include "TransportMgr.h"
 #include "InstanceScript.h"
+#include "Progression.h"
 #include "MapMgr.h"
 #include "MoveSpline.h"
 #include "QueryResult.h"
@@ -426,7 +427,7 @@ void TransportMgr::SpawnContinentTransports()
 
     uint32 count = 0;
     uint32 oldMSTime = getMSTime();
-    QueryResult result = WorldDatabase.Query("SELECT guid, entry FROM transports");
+    QueryResult result = WorldDatabase.Query("SELECT guid, entry FROM transports t1 WHERE Patch=(SELECT max(Patch) FROM transports t2 WHERE t1.guid=t2.guid AND Patch <= {})", sProgression->GetPatchId());
 
     if (sWorld->getBoolConfig(CONFIG_ENABLE_CONTINENT_TRANSPORT))
     {

@@ -21,6 +21,7 @@
 #include "ObjectMgr.h"
 #include "OutdoorPvP.h"
 #include "Player.h"
+#include "Progression.h"
 #include "SpellInfo.h"
 #include "SpellMgr.h"
 #include "StringConvert.h"
@@ -58,7 +59,7 @@ namespace DisableMgr
 
         m_DisableMap.clear();
 
-        QueryResult result = WorldDatabase.Query("SELECT sourceType, entry, flags, params_0, params_1 FROM disables");
+        QueryResult result = WorldDatabase.Query("SELECT sourceType, entry, flags, params_0, params_1 FROM disables WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
         uint32 total_count = 0;
 
