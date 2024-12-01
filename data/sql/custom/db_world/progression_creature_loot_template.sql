@@ -342,7 +342,7 @@ INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `Q
 (10083, 17414, 0, 0.26, 0, 1, 0, 1, 1, 'Rage Talon Flamescale - Codex: Prayer of Fortitude II', 1, 21),
 (10083, 17683, 0, 0.3, 0, 1, 0, 1, 1, 'Rage Talon Flamescale - Book: Gift of the Wild II', 1, 21),
 (10083, 18600, 0, 0.26, 0, 1, 0, 1, 1, 'Rage Talon Flamescale - Tome of Arcane Brilliance', 1, 21),
-(10184, 1, 34000, 100, 0, 1, 0, 1, 5, 'Onyxia - (ReferenceTable)', 19, 21),
+(10184, 1, 34000, 100, 0, 1, 0, 5, 5, 'Onyxia - (ReferenceTable)', 19, 21),
 (10184, 17966, 0, 100, 0, 1, 0, 1, 1, 'Onyxia - Onyxia Hide Backpack', 0, 18),
 (10184, 18422, 0, 100, 0, 1, 0, 1, 1, 'Onyxia - Head of Onyxia', 2, 18),
 (10184, 18423, 0, 100, 0, 1, 0, 1, 1, 'Onyxia - Head of Onyxia', 2, 18),
