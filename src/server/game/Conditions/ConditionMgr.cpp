@@ -22,6 +22,7 @@
 #include "ObjectMgr.h"
 #include "Pet.h"
 #include "Player.h"
+#include "Progression.h"
 #include "ReputationMgr.h"
 #include "ScriptMgr.h"
 #include "ScriptedCreature.h"
@@ -1072,7 +1073,8 @@ void ConditionMgr::LoadConditions(bool isReload)
     }
 
     QueryResult result = WorldDatabase.Query("SELECT SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ElseGroup, ConditionTypeOrReference, ConditionTarget, "
-                                             " ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, ErrorType, ErrorTextId, ScriptName FROM conditions");
+                                             " ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, ErrorType, ErrorTextId, ScriptName FROM conditions "
+                                             "WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {

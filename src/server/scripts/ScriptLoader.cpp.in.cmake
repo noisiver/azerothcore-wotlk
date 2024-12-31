@@ -26,6 +26,7 @@
 
 // Add default scripts include
 @ACORE_SCRIPTS_FORWARD_DECL@
+void AddProgressionScripts();
 #ifdef ACORE_IS_DYNAMIC_SCRIPTLOADER
 #  include "revision.h"
 #  define AC_SCRIPT_API AC_API_EXPORT
@@ -53,7 +54,9 @@ AC_SCRIPT_API char const* GetScriptModule()
 AC_SCRIPT_API void AddScripts()
 {
     // Default scripts
-@ACORE_SCRIPTS_INVOKE@}
+@ACORE_SCRIPTS_INVOKE@
+    AddProgressionScripts();
+}
 
 /// Exposed in script modules to get the build directive of the module.
 AC_SCRIPT_API char const* GetBuildDirective()

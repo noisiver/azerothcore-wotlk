@@ -21,6 +21,7 @@
 #include "Log.h"
 #include "MoveSplineInit.h"
 #include "ObjectMgr.h"
+#include "Progression.h"
 #include "QueryResult.h"
 #include "WaypointMgr.h"
 
@@ -85,7 +86,7 @@ void FormationMgr::LoadCreatureFormations()
     CreatureGroupMap.clear();
 
     //Get group data
-    QueryResult result = WorldDatabase.Query("SELECT leaderGUID, memberGUID, dist, angle, groupAI, point_1, point_2 FROM creature_formations ORDER BY leaderGUID");
+    QueryResult result = WorldDatabase.Query("SELECT leaderGUID, memberGUID, dist, angle, groupAI, point_1, point_2 FROM creature_formations WHERE {} BETWEEN MinPatch AND MaxPatch ORDER BY leaderGUID", sProgression->GetPatchId());
     if (!result)
     {
         LOG_WARN("server.loading", ">> Loaded 0 creatures in formations. DB table `creature_formations` is empty!");

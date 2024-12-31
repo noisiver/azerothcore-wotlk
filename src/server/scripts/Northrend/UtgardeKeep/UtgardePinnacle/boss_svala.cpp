@@ -18,6 +18,7 @@
 #include "CreatureScript.h"
 #include "PassiveAI.h"
 #include "Player.h"
+#include "Progression.h"
 #include "ScriptedCreature.h"
 #include "SpellScript.h"
 #include "SpellScriptLoader.h"
@@ -113,6 +114,7 @@ public:
             instance = creature->GetInstanceScript();
             Started = false;
             ArthasGUID.Clear();
+            ritualCount = 0;
         }
 
         ObjectGuid ArthasGUID;
@@ -141,6 +143,8 @@ public:
                 me->SetImmuneToAll(false);
                 me->SetHover(true);
             }
+
+            ritualCount = 0;
         }
 
         void EnterEvadeMode(EvadeReason why) override
@@ -356,11 +360,19 @@ public:
                     AttackStart(me->GetVictim());
                     me->GetMotionMaster()->MoveFall(0, true);
                     summons.DespawnAll();
+                    if (ritualCount < 3 && sProgression->GetPatchId() < PATCH_FALL_OF_THE_LICH_KING)
+                    {
+                        events.ScheduleEvent(EVENT_SORROWGRAVE_RITUAL, 25s);
+                        ritualCount++;
+                    }
                     break;
             }
 
             DoMeleeAttackIfReady();
         }
+
+        private:
+            uint32 ritualCount;
     };
 };
 

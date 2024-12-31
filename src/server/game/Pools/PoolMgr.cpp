@@ -20,6 +20,7 @@
 #include "Log.h"
 #include "MapMgr.h"
 #include "ObjectMgr.h"
+#include "Progression.h"
 #include "QueryResult.h"
 #include "Transport.h"
 
@@ -580,7 +581,7 @@ void PoolMgr::LoadFromDB()
     {
         uint32 oldMSTime = getMSTime();
 
-        QueryResult result = WorldDatabase.Query("SELECT entry, max_limit FROM pool_template");
+        QueryResult result = WorldDatabase.Query("SELECT entry, max_limit FROM pool_template WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
         if (!result)
         {
             mPoolTemplate.clear();
@@ -613,7 +614,7 @@ void PoolMgr::LoadFromDB()
         uint32 oldMSTime = getMSTime();
 
         //                                                 1       2         3
-        QueryResult result = WorldDatabase.Query("SELECT guid, pool_entry, chance FROM pool_creature");
+        QueryResult result = WorldDatabase.Query("SELECT guid, pool_entry, chance FROM pool_creature WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
         if (!result)
         {
@@ -831,6 +832,7 @@ void PoolMgr::LoadFromDB()
         uint32 oldMSTime = getMSTime();
 
         WorldDatabasePreparedStatement* stmt = WorldDatabase.GetPreparedStatement(WORLD_SEL_QUEST_POOLS);
+        stmt->SetData(0, sProgression->GetPatchId());
         PreparedQueryResult result = WorldDatabase.Query(stmt);
 
         if (!result)

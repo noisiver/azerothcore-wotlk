@@ -19,6 +19,7 @@
 #include "CreatureScript.h"
 #include "GameObjectScript.h"
 #include "Player.h"
+#include "Progression.h"
 #include "ScriptedCreature.h"
 #include "SpellInfo.h"
 #include "Vehicle.h"
@@ -509,10 +510,11 @@ public:
             {
                 uint8 count = m_pInstance->GetData(SKADI_HITS) + 1;
                 m_pInstance->SetData(SKADI_HITS, count);
+                uint8 minCount = sProgression->GetPatchId() < PATCH_FALL_OF_THE_LICH_KING ? 5 : 3;
 
                 if (Creature* grauf = ObjectAccessor::GetCreature(*pPlayer, m_pInstance->GetGuidData(DATA_GRAUF)))
                 {
-                    if (count >= 3)
+                    if (count >= minCount)
                     {
                         m_pInstance->SetData(SKADI_IN_RANGE, 0);
                         grauf->AI()->DoAction(ACTION_REMOVE_SKADI);
