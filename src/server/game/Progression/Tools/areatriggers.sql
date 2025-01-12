@@ -44,3 +44,6 @@ ENGINE=InnoDB
 INSERT INTO `progression_world`.`areatrigger_teleport`
 SELECT `ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`, 17 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`areatrigger_teleport` WHERE `ID` IN (5196, 5197, 5198, 5199)
 UNION SELECT `ID`, `Name`, 0 AS `target_map`, 3117.02 AS `target_position_x`, -3722.46 AS `target_position_y`, 136.467 AS `target_position_z`, 2.6548 AS `target_orientation`, 0 AS `MinPatch`, 16 AS `MaxPatch` FROM `base_world`.`areatrigger_teleport` WHERE `ID` IN (5196, 5197, 5198, 5199);
+
+INSERT INTO `areatrigger_teleport` (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`, `MinPatch`, `MaxPatch`) VALUES
+(4055, 'Naxxramas', 533, 3006.14, -3434.71, 304.196, 5.56455, 10, 16);

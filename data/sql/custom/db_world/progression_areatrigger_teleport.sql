@@ -17,6 +17,7 @@ DROP PROCEDURE IF EXISTS AddColumn;
 
 DELETE FROM `areatrigger_teleport` WHERE `ID` IN (5196, 5197, 5198, 5199);
 INSERT INTO `areatrigger_teleport` (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`, `MinPatch`, `MaxPatch`) VALUES
+(4055, 'Naxxramas', 533, 3006.14, -3434.71, 304.196, 5.56455, 10, 16),
 (5196, 'Naxxramas (exit1)', 0, 3117.02, -3722.46, 136.467, 2.6548, 0, 16),
 (5196, 'Naxxramas (exit1)', 571, 3679.25, -1278.58, 243.55, 2.39, 17, 21),
 (5197, 'Naxxramas (exit2)', 0, 3117.02, -3722.46, 136.467, 2.6548, 0, 16),
