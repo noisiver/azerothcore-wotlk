@@ -20,15 +20,12 @@ Progression::Progression()
     showPatchNotes = true;
 }
 
-void AddSC_boss_lord_kazzak_progression();
 void AddSC_instance_blackrock_spire_progression();
 void AddSC_instance_onyxias_lair_progression();
 void AddSC_boss_onyxia_progression();
 
 void Progression::LoadProgressionScripts()
 {
-    AddSC_boss_lord_kazzak_progression();
-
     if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_ECHOES_OF_DOOM)
     {
         AddSC_instance_blackrock_spire_progression();
