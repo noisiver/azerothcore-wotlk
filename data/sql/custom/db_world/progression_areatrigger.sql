@@ -7,7 +7,7 @@ BEGIN
             ADD COLUMN `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `orientation`,
             ADD COLUMN `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21' AFTER `MinPatch`,
             DROP PRIMARY KEY,
-            ADD PRIMARY KEY (`entry`, `map`, `x`, `y`, `z`, `radius`, `length`, `width`, `height`, `orientation`, `MinPatch`, `MaxPatch`) USING BTREE;
+            ADD PRIMARY KEY (`entry`, `MinPatch`, `MaxPatch`) USING BTREE;
     END IF;
 END $$
 CALL AddColumn()
