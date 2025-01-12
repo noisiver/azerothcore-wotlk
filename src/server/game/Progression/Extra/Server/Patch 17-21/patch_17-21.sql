@@ -3,7 +3,6 @@ DELETE FROM `mapdifficulty_dbc` WHERE `MapID` IN (229, 533);
 DELETE FROM `gameobject` WHERE `id`=181476;
 DELETE FROM `areatrigger` WHERE `entry`=4055;
 DELETE FROM `areatrigger_teleport` WHERE `ID`=4055;
-
 DELETE FROM `areatrigger_teleport` WHERE `ID` IN (5196, 5197, 5198, 5199);
 INSERT INTO `areatrigger_teleport` (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
 (5196, 'Naxxramas (exit1)', 571, 3679.25, -1278.58, 243.55, 2.39),
