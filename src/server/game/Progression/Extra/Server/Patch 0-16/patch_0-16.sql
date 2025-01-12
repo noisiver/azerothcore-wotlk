@@ -16,6 +16,10 @@ DELETE FROM `areatrigger` WHERE `entry`=4055;
 INSERT INTO `areatrigger` (`entry`, `map`, `x`, `y`, `z`, `radius`, `length`, `width`, `height`, `orientation`) VALUES
 (4055, 0, 3132.72, -3731.23, 138.88182, 5, 0, 0, 0, 0);
 
-DELETE FROM `areatrigger_teleport` WHERE `ID`=4055;
+DELETE FROM `areatrigger_teleport` WHERE `ID` IN (4055, 5196, 5197, 5198, 5199);
 INSERT INTO `areatrigger_teleport` (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
-(4055, 'Naxxramas', 533, 3005.59, -3434.49, 304.196, 0);
+(4055, 'Naxxramas', 533, 3006.14, -3434.71, 304.196, 5.56455),
+(5196, 'Naxxramas (exit1)', 0, 3117.02, -3722.46, 136.467, 2.6548),
+(5197, 'Naxxramas (exit2)', 0, 3117.02, -3722.46, 136.467, 2.6548),
+(5198, 'Naxxramas (exit3)', 0, 3117.02, -3722.46, 136.467, 2.6548),
+(5199, 'Naxxramas (exit4)', 0, 3117.02, -3722.46, 136.467, 2.6548);
