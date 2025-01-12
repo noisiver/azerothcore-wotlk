@@ -24,9 +24,6 @@ void AddSC_boss_lord_kazzak_progression();
 void AddSC_instance_blackrock_spire_progression();
 void AddSC_instance_onyxias_lair_progression();
 void AddSC_boss_onyxia_progression();
-void AddSC_zone_dalaran_progression();
-void AddSC_boss_skadi_progression();
-void AddSC_boss_svala_progression();
 
 void Progression::LoadProgressionScripts()
 {
@@ -42,6 +39,4 @@ void Progression::LoadProgressionScripts()
         AddSC_instance_onyxias_lair_progression();
         AddSC_boss_onyxia_progression();
     }
-
-    AddSC_zone_dalaran_progression();
 }
