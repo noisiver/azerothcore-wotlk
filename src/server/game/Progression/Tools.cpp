@@ -398,6 +398,14 @@ void Tools::OnGiveXP(Player* /*player*/, uint32& amount, Unit* /*victim*/, uint8
     }
 }
 
+void Tools::OnBeforeChooseGraveyard(Player* player, TeamId /*teamId*/, bool /*nearCorpse*/, uint32& graveyardOverride)
+{
+    if (player->GetMapId() == MAP_NAXXRAMAS && sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+    {
+        graveyardOverride = GRAVEYARD_STRATHOLME;
+    }
+}
+
 void Tools::ModifyPeriodicDamageAurasTick(Unit* /*target*/, Unit* attacker, uint32& damage, SpellInfo const* /*spellInfo*/)
 {
     if (!attacker)

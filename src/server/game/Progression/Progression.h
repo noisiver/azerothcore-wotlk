@@ -102,7 +102,10 @@ enum
     SPELL_LIFE_STEAL               = 20004,
 
     FACTION_SILVERMOON_CITY        = 911,
-    FACTION_EXODAR                 = 930
+    FACTION_EXODAR                 = 930,
+
+    MAP_NAXXRAMAS                  = 533,
+    GRAVEYARD_STRATHOLME           = 1449
 };
 
 class Progression
