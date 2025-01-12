@@ -7,7 +7,8 @@ BEGIN
             ADD COLUMN `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `target_orientation`,
             ADD COLUMN `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21' AFTER `MinPatch`,
             DROP PRIMARY KEY,
-            ADD PRIMARY KEY (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`, `MinPatch`, `MaxPatch`) USING BTREE;
+            ADD PRIMARY KEY (`ID`, `Name`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`, `MinPatch`, `MaxPatch`) USING BTREE,
+            FULLTEXT INDEX `name` (`Name`);
     END IF;
 END $$
 CALL AddColumn()
