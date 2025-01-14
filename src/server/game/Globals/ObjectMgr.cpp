@@ -6654,7 +6654,7 @@ void ObjectMgr::LoadAreaTriggers()
 
     _areaTriggerStore.clear();
 
-    QueryResult result = WorldDatabase.Query("SELECT entry, map, x, y, z, radius, length, width, height, orientation FROM areatrigger");
+    QueryResult result = WorldDatabase.Query("SELECT entry, map, x, y, z, radius, length, width, height, orientation FROM areatrigger WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -6705,7 +6705,7 @@ void ObjectMgr::LoadAreaTriggerTeleports()
     _areaTriggerTeleportStore.clear();                                  // need for reload case
 
     //                                               0        1              2                  3                  4                   5
-    QueryResult result = WorldDatabase.Query("SELECT ID,  target_map, target_position_x, target_position_y, target_position_z, target_orientation FROM areatrigger_teleport");
+    QueryResult result = WorldDatabase.Query("SELECT ID,  target_map, target_position_x, target_position_y, target_position_z, target_orientation FROM areatrigger_teleport WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
     if (!result)
     {
