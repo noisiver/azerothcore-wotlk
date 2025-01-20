@@ -5995,7 +5995,7 @@ void ObjectMgr::LoadGossipText()
                          "text5_0, text5_1, BroadcastTextID5, lang5, Probability5, em5_0, em5_1, em5_2, em5_3, em5_4, em5_5, "
                          "text6_0, text6_1, BroadcastTextID6, lang6, Probability6, em6_0, em6_1, em6_2, em6_3, em6_4, em6_5, "
                          "text7_0, text7_1, BroadcastTextID7, lang7, Probability7, em7_0, em7_1, em7_2, em7_3, em7_4, em7_5 "
-                         "FROM npc_text");
+                         "FROM npc_text t1 WHERE Patch=(SELECT max(Patch) FROM npc_text t2 WHERE t1.ID=t2.ID AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -7178,7 +7178,7 @@ void ObjectMgr::LoadGameObjectTemplate()
                          "Data0, Data1, Data2, Data3, Data4, Data5, Data6, Data7, Data8, Data9, Data10, Data11, Data12, "
                          //                                          21      22      23      24      25      26      27      28      29      30      31      32        33
                          "Data13, Data14, Data15, Data16, Data17, Data18, Data19, Data20, Data21, Data22, Data23, AIName, ScriptName "
-                         "FROM gameobject_template");
+                         "FROM gameobject_template t1 WHERE Patch=(SELECT max(Patch) FROM gameobject_template t2 WHERE t1.entry=t2.entry AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
