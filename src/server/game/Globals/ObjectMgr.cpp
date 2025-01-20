@@ -9629,7 +9629,7 @@ void ObjectMgr::LoadBroadcastTexts()
 
     //                                               0   1           2         3           4         5         6         7            8            9            10              11        12
     QueryResult result = WorldDatabase.Query("SELECT ID, LanguageID, MaleText, FemaleText, EmoteID1, EmoteID2, EmoteID3, EmoteDelay1, EmoteDelay2, EmoteDelay3, SoundEntriesID, EmotesID, Flags FROM broadcast_text t1 "
-                                             "WHERE Patch=(SELECT max(Patch) FROM npc_text t2 WHERE t1.ID=t2.ID AND Patch <= {})", sProgression->GetPatchId());
+                                             "WHERE Patch=(SELECT max(Patch) FROM broadcast_text t2 WHERE t1.ID=t2.ID AND Patch <= {})", sProgression->GetPatchId());
     if (!result)
     {
         LOG_WARN("server.loading", ">> Loaded 0 broadcast texts. DB table `broadcast_text` is empty.");
