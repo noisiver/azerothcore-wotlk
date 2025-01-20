@@ -53,7 +53,9 @@ void TransportMgr::LoadTransportTemplates()
 {
     uint32 oldMSTime = getMSTime();
 
-    QueryResult result = WorldDatabase.Query("SELECT entry FROM gameobject_template WHERE type = 15 ORDER BY entry ASC");
+    QueryResult result = WorldDatabase.Query("SELECT entry FROM gameobject_template t1 WHERE type = 15 "
+                                             "AND Patch=(SELECT max(Patch) FROM gameobject_template t2 WHERE t1.entry=t2.entry AND Patch <= {}) "
+                                             "ORDER BY entry ASC", sProgression->GetPatchId());
 
     if (!result)
     {
