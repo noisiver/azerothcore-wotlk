@@ -858,7 +858,8 @@ void ObjectMgr::LoadCreatureTemplateAddons()
     uint32 oldMSTime = getMSTime();
 
     //                                                0       1       2      3       4       5              6               7
-    QueryResult result = WorldDatabase.Query("SELECT entry, path_id, mount, bytes1, bytes2, emote, visibilityDistanceType, auras FROM creature_template_addon");
+    QueryResult result = WorldDatabase.Query("SELECT entry, path_id, mount, bytes1, bytes2, emote, visibilityDistanceType, auras FROM creature_template_addon t1 "
+                                             "WHERE t1.Patch=(SELECT max(Patch) FROM creature_template_addon t2 WHERE t1.entry=t2.entry AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -4513,7 +4514,8 @@ void ObjectMgr::LoadQuests()
 
     // Load `quest_request_items`
     //                                   0   1                2                  3
-    result = WorldDatabase.Query("SELECT ID, EmoteOnComplete, EmoteOnIncomplete, CompletionText FROM quest_request_items");
+    result = WorldDatabase.Query("SELECT ID, EmoteOnComplete, EmoteOnIncomplete, CompletionText FROM quest_request_items t1 "
+                                 "WHERE Patch=(SELECT max(Patch) FROM quest_request_items t2 WHERE t1.ID=t2.ID AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -4536,7 +4538,8 @@ void ObjectMgr::LoadQuests()
 
     // Load `quest_offer_reward`
     //                                   0   1       2       3       4       5            6            7            8            9
-    result = WorldDatabase.Query("SELECT ID, Emote1, Emote2, Emote3, Emote4, EmoteDelay1, EmoteDelay2, EmoteDelay3, EmoteDelay4, RewardText FROM quest_offer_reward");
+    result = WorldDatabase.Query("SELECT ID, Emote1, Emote2, Emote3, Emote4, EmoteDelay1, EmoteDelay2, EmoteDelay3, EmoteDelay4, RewardText FROM quest_offer_reward t1 "
+                                 "WHERE Patch=(SELECT max(Patch) FROM quest_offer_reward t2 WHERE t1.ID=t2.ID AND Patch <= {})", sProgression->GetPatchId());
 
     if (!result)
     {
