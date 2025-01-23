@@ -221,7 +221,7 @@ ENGINE=InnoDB
 ;
 
 INSERT INTO `progression_world`.`creature_template`
-SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 20 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (38, 103, 706, 946, 1505, 1506, 1507, 1667, 1688, 1986, 1994, 2952, 2953, 2954, 2966, 3101, 3102, 3183, 8554, 31439)
+SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 20 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (38, 69, 103, 299, 706, 946, 1505, 1506, 1507, 1667, 1688, 1986, 1994, 2952, 2953, 2954, 2966, 3101, 3102, 3183, 8554, 31439)
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 19 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (10184, 11262, 12129)
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 17 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (68, 1747, 1748, 1756, 1976, 2784, 3057, 3083, 3084, 3296, 4262, 4624, 4949, 5595, 5624, 5952, 7937, 7980, 7999, 9460, 10181, 10540, 11190, 13839, 14304, 14363, 14365, 14367, 14375, 14376, 14377, 14378, 14379, 14380, 14423, 14438, 14439, 14440, 14441, 15350, 15351, 16096, 16222, 16733, 16802, 17468, 20672, 20674, 24456, 24841, 24842, 24996, 24997, 24998, 25007, 25021, 25023, 25024, 25079, 25080, 25081, 25083, 29016, 29019, 29152, 29712, 36224, 36225, 36226, 36273)
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 15 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (596, 594, 619, 1063, 1892, 1893, 1896, 2106, 3529, 3531, 3533, 3630, 3631, 3632, 3633, 3634, 3638, 3641, 4280, 4281, 4282, 4283, 4284, 4285, 4788, 4789, 4802, 4803, 4844, 4845, 4846, 4851, 4856, 4872, 5224, 5225, 5235, 5243, 5261, 5263, 5269, 5645, 5646, 5647, 6132, 6208, 6210, 6213, 6231, 7872, 7873, 7874, 9043, 9044, 11440, 11442, 11443, 11777, 11781, 11782, 11785, 11786, 11787, 11788, 12865, 24818, 24819)
@@ -264,7 +264,51 @@ UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_en
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 12 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=10508
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, 0 AS `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=10508
 UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 12 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=18978
-UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, 0 AS `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=18978;
+UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, 0 AS `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=18978
+UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, 'Young Wolf' AS `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=299
+UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, 'Timber Wolf' AS `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry`=69;
+
+DROP TABLE IF EXISTS `progression_world`.`creature_template_addon`;
+CREATE TABLE `progression_world`.`creature_template_addon` (
+    `entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `Patch` INT UNSIGNED NOT NULL DEFAULT '0',
+    `path_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `mount` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `bytes1` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `bytes2` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `emote` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `visibilityDistanceType` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `auras` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    PRIMARY KEY (`entry`, `Patch`) USING BTREE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `progression_world`.`creature_template_addon`
+SELECT `entry`, 20 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (69, 299)
+UNION SELECT `entry`, 0 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, NULL AS `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (69, 299);
+
+DROP TABLE IF EXISTS `progression_world`.`creature_template_model`;
+CREATE TABLE `progression_world`.`creature_template_model` (
+    `CreatureID` INT(10) UNSIGNED NOT NULL,
+    `Idx` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `Patch` INT UNSIGNED NOT NULL DEFAULT '0',
+    `CreatureDisplayID` INT(10) UNSIGNED NOT NULL,
+    `DisplayScale` FLOAT NOT NULL DEFAULT '1',
+    `Probability` FLOAT NOT NULL DEFAULT '0',
+    `VerifiedBuild` SMALLINT(5) UNSIGNED NULL DEFAULT NULL,
+    PRIMARY KEY (`CreatureID`, `Idx`, `Patch`) USING BTREE,
+    CONSTRAINT `creature_template_model_chk_1` CHECK ((`Idx` <= 3))
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `progression_world`.`creature_template_model`
+SELECT `CreatureID`, `Idx`, 20 AS `Patch`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID` IN (69, 299)
+UNION SELECT `CreatureID`, `Idx`, 0 AS `Patch`, 447 AS `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID`=299
+UNION SELECT `CreatureID`, `Idx`, 0 AS `Patch`, 604 AS `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID`=69;
 
 DROP TABLE IF EXISTS `progression_world`.`waypoint_data`;
 CREATE TABLE `progression_world`.`waypoint_data` (
@@ -441,3 +485,135 @@ INSERT INTO `progression_world`.`smart_scripts` (`entryorguid`, `source_type`, `
 (1748, 0, 2, 0, 4, 0, 100, 1, 0, 0, 0, 0, 0, 0, 11, 8990, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Retribution Aura On Aggro', 0, 16),
 (1748, 0, 3, 0, 0, 0, 100, 0, 3000, 9000, 6000, 12000, 0, 0, 11, 20684, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Cleave', 0, 16),
 (1748, 0, 4, 0, 0, 0, 100, 0, 5000, 15000, 20000, 40000, 0, 0, 11, 20683, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Highlord\'s Justice', 0, 16);
+
+DROP TABLE IF EXISTS `progression_world`.`npc_text`;
+CREATE TABLE `progression_world`.`npc_text` (
+    `ID` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `Patch` INT UNSIGNED NOT NULL DEFAULT '0',
+    `text0_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text0_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID0` INT(10) NOT NULL DEFAULT '0',
+    `lang0` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability0` FLOAT NOT NULL DEFAULT '0',
+    `em0_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em0_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em0_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em0_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em0_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em0_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text1_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text1_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID1` INT(10) NOT NULL DEFAULT '0',
+    `lang1` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability1` FLOAT NOT NULL DEFAULT '0',
+    `em1_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em1_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em1_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em1_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em1_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em1_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text2_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text2_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID2` INT(10) NOT NULL DEFAULT '0',
+    `lang2` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability2` FLOAT NOT NULL DEFAULT '0',
+    `em2_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em2_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em2_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em2_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em2_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em2_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text3_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text3_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID3` INT(10) NOT NULL DEFAULT '0',
+    `lang3` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability3` FLOAT NOT NULL DEFAULT '0',
+    `em3_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em3_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em3_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em3_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em3_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em3_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text4_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text4_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID4` INT(10) NOT NULL DEFAULT '0',
+    `lang4` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability4` FLOAT NOT NULL DEFAULT '0',
+    `em4_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em4_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em4_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em4_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em4_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em4_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text5_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text5_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID5` INT(10) NOT NULL DEFAULT '0',
+    `lang5` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability5` FLOAT NOT NULL DEFAULT '0',
+    `em5_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em5_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em5_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em5_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em5_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em5_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text6_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text6_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID6` INT(10) NOT NULL DEFAULT '0',
+    `lang6` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability6` FLOAT NOT NULL DEFAULT '0',
+    `em6_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em6_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em6_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em6_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em6_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em6_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `text7_0` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `text7_1` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `BroadcastTextID7` INT(10) NOT NULL DEFAULT '0',
+    `lang7` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+    `Probability7` FLOAT NOT NULL DEFAULT '0',
+    `em7_0` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em7_1` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em7_2` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em7_3` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em7_4` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `em7_5` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+    `VerifiedBuild` INT(10) NULL DEFAULT NULL,
+    PRIMARY KEY (`ID`, `Patch`) USING BTREE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `progression_world`.`npc_text`
+SELECT `ID`, 17 AS `Patch`, `text0_0`, `text0_1`, `BroadcastTextID0`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `BroadcastTextID1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `BroadcastTextID2`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `BroadcastTextID3`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `BroadcastTextID4`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `BroadcastTextID5`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `BroadcastTextID6`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `BroadcastTextID7`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild` FROM `base_world`.`npc_text` WHERE `ID`=5480
+UNION SELECT `ID`, 12 AS `Patch`, 'On the northern dock, you can board a ship that will carry you to Rut\'theran Village and Darnassus. From the southern dock, you can find passage across the Great Sea to Menethil Harbor on Khaz Modan. The dock to the west, at the end of the pier, leads to Azuremyst Isle, near the Exodar. Safe journeys to you!' AS `text0_0`, `text0_1`, `BroadcastTextID0`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `BroadcastTextID1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `BroadcastTextID2`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `BroadcastTextID3`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `BroadcastTextID4`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `BroadcastTextID5`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `BroadcastTextID6`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `BroadcastTextID7`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild` FROM `base_world`.`npc_text` WHERE `ID`=5480
+UNION SELECT `ID`, 0 AS `Patch`, 'On the northern dock, you can board a ship that will carry you to Rut\'theran Village and Darnassus.  From the southern dock, you can find passage across the Great Sea to Menethil Harbor on Khaz Modan. Safe journeys to you!' AS `text0_0`, `text0_1`, `BroadcastTextID0`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `BroadcastTextID1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `BroadcastTextID2`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `BroadcastTextID3`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `BroadcastTextID4`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `BroadcastTextID5`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `BroadcastTextID6`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `BroadcastTextID7`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild` FROM `base_world`.`npc_text` WHERE `ID`=5480;
+
+DROP TABLE IF EXISTS `progression_world`.`broadcast_text`;
+CREATE TABLE `progression_world`.`broadcast_text` (
+    `ID` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `Patch` INT UNSIGNED NOT NULL DEFAULT '0',
+    `LanguageID` INT(10) NULL DEFAULT NULL,
+    `MaleText` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `FemaleText` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+    `EmoteID1` INT(10) NULL DEFAULT NULL,
+    `EmoteID2` INT(10) NULL DEFAULT NULL,
+    `EmoteID3` INT(10) NULL DEFAULT NULL,
+    `EmoteDelay1` INT(10) NULL DEFAULT NULL,
+    `EmoteDelay2` INT(10) NULL DEFAULT NULL,
+    `EmoteDelay3` INT(10) NULL DEFAULT NULL,
+    `SoundEntriesId` INT(10) NULL DEFAULT NULL,
+    `EmotesID` INT(10) NULL DEFAULT NULL,
+    `Flags` INT(10) NULL DEFAULT NULL,
+    `VerifiedBuild` SMALLINT(5) NULL DEFAULT '0',
+    PRIMARY KEY (`ID`, `Patch`) USING BTREE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `progression_world`.`broadcast_text`
+SELECT `ID`, 17 AS `Patch`, `LanguageID`, `MaleText`, `FemaleText`, `EmoteID1`, `EmoteID2`, `EmoteID3`, `EmoteDelay1`, `EmoteDelay2`, `EmoteDelay3`, `SoundEntriesId`, `EmotesID`, `Flags`, `VerifiedBuild` FROM `base_world`.`broadcast_text` WHERE `ID`=8106
+UNION SELECT `ID`, 12 AS `Patch`, `LanguageID`, 'On the northern dock, you can board a ship that will carry you to Rut\'theran Village and Darnassus. From the southern dock, you can find passage across the Great Sea to Menethil Harbor on Khaz Modan. The dock to the west, at the end of the pier, leads to Azuremyst Isle, near the Exodar. Safe journeys to you!' AS `MaleText`, `FemaleText`, `EmoteID1`, `EmoteID2`, `EmoteID3`, `EmoteDelay1`, `EmoteDelay2`, `EmoteDelay3`, `SoundEntriesId`, `EmotesID`, `Flags`, `VerifiedBuild` FROM `base_world`.`broadcast_text` WHERE `ID`=8106
+UNION SELECT `ID`, 0 AS `Patch`, `LanguageID`, 'On the northern dock, you can board a ship that will carry you to Rut\'theran Village and Darnassus.  From the southern dock, you can find passage across the Great Sea to Menethil Harbor on Khaz Modan. Safe journeys to you!' AS `MaleText`, `FemaleText`, `EmoteID1`, `EmoteID2`, `EmoteID3`, `EmoteDelay1`, `EmoteDelay2`, `EmoteDelay3`, `SoundEntriesId`, `EmotesID`, `Flags`, `VerifiedBuild` FROM `base_world`.`broadcast_text` WHERE `ID`=8106;
