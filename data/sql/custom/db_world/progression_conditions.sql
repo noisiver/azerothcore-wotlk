@@ -20,7 +20,12 @@ DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=4 AND `SourceGroup` IN 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=10 AND `SourceGroup` IN (11019, 11020, 11021, 11022) AND `SourceEntry`=50289;
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=10 AND `SourceGroup`=11150;
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=1 AND `SourceEntry` IN (17008, 18422, 18423, 21103, 21104, 21105, 21108, 21110, 49205, 49643, 49644);
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=1 AND `SourceGroup` IN (69, 299) AND `SourceEntry` IN (750, 50432);
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+(1, 69, 750, 0, 0, 9, 0, 33, 0, 0, 0, 0, 0, '', NULL, 0, 19),
+(1, 69, 50432, 0, 0, 9, 0, 33, 0, 0, 0, 0, 0, '', NULL, 20, 21),
+(1, 299, 750, 0, 0, 9, 0, 33, 0, 0, 0, 0, 0, '', NULL, 0, 19),
+(1, 299, 50432, 0, 0, 9, 0, 33, 0, 0, 0, 0, 0, '', NULL, 20, 21),
 (1, 4421, 17008, 0, 0, 6, 0, 67, 0, 0, 0, 0, 0, '', NULL, 0, 19),
 (1, 4421, 49205, 0, 0, 6, 0, 67, 0, 0, 0, 0, 0, '', NULL, 20, 21),
 (1, 7461, 21105, 0, 0, 9, 0, 8620, 0, 0, 0, 0, 0, '', 'Draconic for Dummies Chapter III will drop only when a player have The Only Prescription (8620) in their quest log', 8, 21),
