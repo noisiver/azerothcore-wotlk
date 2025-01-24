@@ -57,7 +57,7 @@ UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`
 UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry` IN (69, 299) AND `Item`=50432
 UNION SELECT `Entry`, 750 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry` IN (69, 299) AND `Item`=50432;
 
-INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+INSERT INTO `progression_world`.`creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
 (10184, 17966, 0, 100, 0, 1, 0, 1, 1, 'Onyxia - Onyxia Hide Backpack', 0, 18),
 (10184, 46000, 46000, 100, 0, 1, 0, 2, 2, 'Onyxia - (ReferenceTable)', 0, 18),
 (10184, 46001, 46001, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
@@ -313,7 +313,7 @@ UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`
 UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item`=47241
 UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item`=47241;
 
-INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+INSERT INTO `progression_world`.`reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
 (46000, 16900, 0, 0, 0, 1, 1, 1, 1, 'Stormrage Cover', 0, 18),
 (46000, 16908, 0, 0, 0, 1, 1, 1, 1, 'Bloodfang Hood', 0, 18),
 (46000, 16914, 0, 0, 0, 1, 1, 1, 1, 'Netherwind Crown', 0, 18),
