@@ -187,7 +187,7 @@ void Tools::UpdateConfig()
         sWorld->setIntConfig(CONFIG_ARENA_SEASON_ID, 8);
     }
 
-    if (sProgression->GetPatchId() <= PATCH_BATTLEGROUNDS)
+    if (sProgression->GetPatchId() < PATCH_BEFORE_THE_STORM)
     {
         sWorld->setRate(RATE_HONOR, 0);
         sWorld->setRate(RATE_ARENA_POINTS, 0);
