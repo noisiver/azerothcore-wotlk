@@ -21,6 +21,8 @@
 #include "SpellInfo.h"
 #include "onyxias_lair.h"
 
+#include "Progression.h"
+
 enum Spells
 {
     SPELL_WINGBUFFET                = 18500,
@@ -183,10 +185,18 @@ public:
         SetPhase(PHASE_GROUNDED);
 
         instance->DoStopTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_TIMED_START_EVENT); // just in case at reset some players already left the instance
-        instance->DoStartTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_TIMED_START_EVENT);
+
+        if (sProgression->GetPatchId() >= PATCH_CALL_OF_THE_CRUSADE)
+        {
+            instance->DoStartTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_TIMED_START_EVENT);
+        }
+
         BossAI::JustEngagedWith(who);
 
-        me->SummonCreature(NPC_ONYXIAN_LAIR_GUARD, -167.837936f, -200.549332f, -66.343231f, 5.598287f, TEMPSUMMON_MANUAL_DESPAWN);
+        if (sProgression->GetPatchId() >= PATCH_CALL_OF_THE_CRUSADE)
+        {
+            me->SummonCreature(NPC_ONYXIAN_LAIR_GUARD, -167.837936f, -200.549332f, -66.343231f, 5.598287f, TEMPSUMMON_MANUAL_DESPAWN);
+        }
     }
 
     void DamageTaken(Unit*, uint32& damage, DamageEffectType, SpellSchoolMask) override
@@ -382,7 +392,10 @@ public:
 
                 whelpSpam = true;
                 events.ScheduleEvent(EVENT_WHELP_SPAM, 90000);
-                events.ScheduleEvent(EVENT_SUMMON_LAIR_GUARD, 30000);
+                if (sProgression->GetPatchId() >= PATCH_CALL_OF_THE_CRUSADE)
+                {
+                    events.ScheduleEvent(EVENT_SUMMON_LAIR_GUARD, 30000);
+                }
                 break;
             }
             case EVENT_SUMMON_LAIR_GUARD:

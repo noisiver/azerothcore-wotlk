@@ -21,8 +21,7 @@ Progression::Progression()
 }
 
 void AddSC_instance_blackrock_spire_progression();
-void AddSC_instance_onyxias_lair_progression();
-void AddSC_boss_onyxia_progression();
+void AddSC_instance_onyxias_lair_tweaks();
 
 void Progression::LoadProgressionScripts()
 {
@@ -33,7 +32,6 @@ void Progression::LoadProgressionScripts()
 
     if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_CALL_OF_THE_CRUSADE)
     {
-        AddSC_instance_onyxias_lair_progression();
-        AddSC_boss_onyxia_progression();
+        AddSC_instance_onyxias_lair_tweaks();
     }
 }

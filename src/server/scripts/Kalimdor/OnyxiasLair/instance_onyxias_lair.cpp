@@ -19,6 +19,8 @@
 #include "ScriptedCreature.h"
 #include "onyxias_lair.h"
 
+#include "Progression.h"
+
 ObjectData const creatureData[] =
 {
     { NPC_ONYXIA, DATA_ONYXIA },
@@ -97,6 +99,17 @@ public:
 
         bool CheckAchievementCriteriaMeet(uint32 criteria_id, Player const*  /*source*/, Unit const*  /*target*/, uint32  /*miscvalue1*/) override
         {
+            if (sProgression->GetPatchId() < PATCH_CALL_OF_THE_CRUSADE)
+            {
+                if (criteria_id == ACHIEV_CRITERIA_MANY_WHELPS_10_PLAYER ||
+                    criteria_id == ACHIEV_CRITERIA_MANY_WHELPS_25_PLAYER ||
+                    criteria_id == ACHIEV_CRITERIA_DEEP_BREATH_10_PLAYER ||
+                    criteria_id == ACHIEV_CRITERIA_DEEP_BREATH_25_PLAYER)
+                {
+                    return false;
+                }
+            }
+
             switch (criteria_id)
             {
                 case ACHIEV_CRITERIA_MANY_WHELPS_10_PLAYER:
