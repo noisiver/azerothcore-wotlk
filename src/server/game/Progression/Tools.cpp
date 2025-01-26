@@ -187,16 +187,16 @@ void Tools::UpdateConfig()
         sWorld->setIntConfig(CONFIG_ARENA_SEASON_ID, 8);
     }
 
-    if (PatchId < PATCH_BATTLEGROUNDS)
+    if (sProgression->GetPatchId() < PATCH_BATTLEGROUNDS)
     {
         sWorld->setRate(RATE_HONOR, 0);
     }
-    else if (PatchId < PATCH_FALL_OF_THE_LICH_KING)
+    else if (sProgression->GetPatchId() < PATCH_FALL_OF_THE_LICH_KING)
     {
         sWorld->setRate(RATE_HONOR, 0.5f);
     }
 
-    if (PatchId < PATCH_BEFORE_THE_STORM)
+    if (sProgression->GetPatchId() < PATCH_BEFORE_THE_STORM)
     {
         sWorld->setRate(RATE_ARENA_POINTS, 0);
     }
