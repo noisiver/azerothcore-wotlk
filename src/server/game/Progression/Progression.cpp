@@ -22,28 +22,16 @@ Progression::Progression()
 
 void AddSC_instance_blackrock_spire_progression();
 void AddSC_instance_onyxias_lair_tweaks();
-void AddSC_at_naxxramas();
-void AddSC_npc_necro_knight_guardian();
-void AddSC_instance_naxxramas_tweaks();
 
 void Progression::LoadProgressionScripts()
 {
-    uint32 id = sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM);
-
-    if (id < PATCH_ECHOES_OF_DOOM)
+    if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_ECHOES_OF_DOOM)
     {
         AddSC_instance_blackrock_spire_progression();
-        AddSC_npc_necro_knight_guardian();
-        AddSC_instance_naxxramas_tweaks();
     }
 
-    if (id < PATCH_CALL_OF_THE_CRUSADE)
+    if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_CALL_OF_THE_CRUSADE)
     {
         AddSC_instance_onyxias_lair_tweaks();
-    }
-
-    if (id >= PATCH_SHADOW_OF_THE_NECROPOLIS && id < PATCH_ECHOES_OF_DOOM)
-    {
-        AddSC_at_naxxramas();
     }
 }

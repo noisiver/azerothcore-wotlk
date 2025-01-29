@@ -22,8 +22,6 @@
 #include "SpellScriptLoader.h"
 #include "naxxramas.h"
 
-#include "Progression.h"
-
 enum Spells
 {
     SPELL_MORTAL_WOUND                  = 25646,
@@ -34,8 +32,7 @@ enum Spells
     SPELL_DECIMATE_DAMAGE               = 28375,
     SPELL_BERSERK                       = 26662,
     SPELL_INFECTED_WOUND                = 29306,
-    SPELL_CHOW_SEARCHER                 = 28404,
-    SPELL_TERRIFYING_ROAR               = 29685
+    SPELL_CHOW_SEARCHER                 = 28404
 };
 
 enum Events
@@ -45,8 +42,7 @@ enum Events
     EVENT_DECIMATE                      = 3,
     EVENT_BERSERK                       = 4,
     EVENT_SUMMON_ZOMBIE                 = 5,
-    EVENT_CAN_EAT_ZOMBIE                = 6,
-    EVENT_TERRIFYING_ROAR               = 7
+    EVENT_CAN_EAT_ZOMBIE                = 6
 };
 
 enum Misc
@@ -121,22 +117,11 @@ public:
             BossAI::JustEngagedWith(who);
             me->SetInCombatWithZone();
             events.ScheduleEvent(EVENT_MORTAL_WOUND, 10s);
-            events.ScheduleEvent(EVENT_ENRAGE, sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 10s : 22s);
-            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
-            {
-                events.ScheduleEvent(EVENT_DECIMATE, 105000);
-            }
-            else
-            {
-                events.ScheduleEvent(EVENT_DECIMATE, RAID_MODE(110000, 90000));
-            }
-            events.ScheduleEvent(EVENT_BERSERK, sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 330000 : 360000);
-            events.ScheduleEvent(EVENT_SUMMON_ZOMBIE, sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 6s : 10s);
+            events.ScheduleEvent(EVENT_ENRAGE, 22s);
+            events.ScheduleEvent(EVENT_DECIMATE, RAID_MODE(110000, 90000));
+            events.ScheduleEvent(EVENT_BERSERK, 6min);
+            events.ScheduleEvent(EVENT_SUMMON_ZOMBIE, 10s);
             events.ScheduleEvent(EVENT_CAN_EAT_ZOMBIE, 1s);
-            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
-            {
-                events.ScheduleEvent(EVENT_TERRIFYING_ROAR, 20s);
-            }
         }
 
         void JustSummoned(Creature* summon) override
@@ -206,7 +191,7 @@ public:
                 case EVENT_ENRAGE:
                     Talk(EMOTE_ENRAGE);
                     me->CastSpell(me, RAID_MODE(SPELL_ENRAGE_10, SPELL_ENRAGE_25), true);
-                    events.Repeat(sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 10s : 22s);
+                    events.Repeat(22s);
                     break;
                 case EVENT_MORTAL_WOUND:
                     me->CastSpell(me->GetVictim(), SPELL_MORTAL_WOUND, false);
@@ -215,14 +200,7 @@ public:
                 case EVENT_DECIMATE:
                     Talk(EMOTE_DECIMATE);
                     me->CastSpell(me, RAID_MODE(SPELL_DECIMATE_10, SPELL_DECIMATE_25), false);
-                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
-                    {
-                        events.RepeatEvent(105000);
-                    }
-                    else
-                    {
-                        events.RepeatEvent(RAID_MODE(110000, 90000));
-                    }
+                    events.RepeatEvent(RAID_MODE(110000, 90000));
                     break;
                 case EVENT_SUMMON_ZOMBIE:
                     {
@@ -232,7 +210,7 @@ public:
                             // In 10 man raid, normal mode - should spawn only from mid gate
                             // \1 |0 /2 pos
                             // In 25 man raid - should spawn from all 3 gates
-                            if (me->GetMap()->GetDifficulty() == RAID_DIFFICULTY_10MAN_NORMAL && sProgression->GetPatchId() >= PATCH_ECHOES_OF_DOOM)
+                            if (me->GetMap()->GetDifficulty() == RAID_DIFFICULTY_10MAN_NORMAL)
                             {
                                 me->SummonCreature(NPC_ZOMBIE_CHOW, zombiePos[0]);
                             }
@@ -242,7 +220,7 @@ public:
                             }
                             (rand == 2 ? rand = 0 : rand++);
                         }
-                        events.Repeat(sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 6s : 10s);
+                        events.Repeat(10s);
                         break;
                     }
                 case EVENT_CAN_EAT_ZOMBIE:
@@ -253,10 +231,6 @@ public:
                         Talk(EMOTE_DEVOURS_ALL);
                         return; // leave it to skip DoMeleeAttackIfReady
                     }
-                    break;
-                case EVENT_TERRIFYING_ROAR:
-                    me->CastSpell(me, SPELL_TERRIFYING_ROAR, false);
-                    events.Repeat(20s);
                     break;
             }
             DoMeleeAttackIfReady();

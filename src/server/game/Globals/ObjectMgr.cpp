@@ -714,9 +714,7 @@ void ObjectMgr::LoadCreatureTemplateModels()
     uint32 oldMSTime = getMSTime();
 
     //                                               0           1                  2             3
-    QueryResult result = WorldDatabase.Query("SELECT CreatureID, CreatureDisplayID, DisplayScale, Probability FROM creature_template_model t1 "
-                                             "WHERE Patch=(SELECT max(Patch) FROM creature_template_model t2 WHERE t1.CreatureID=t2.CreatureID AND t1.Idx=t2.Idx AND Patch <= {}) "
-                                             "ORDER BY Idx ASC", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT CreatureID, CreatureDisplayID, DisplayScale, Probability FROM creature_template_model ORDER BY Idx ASC");
 
     if (!result)
     {
@@ -1492,7 +1490,7 @@ void ObjectMgr::LoadEquipmentTemplates()
     uint32 oldMSTime = getMSTime();
 
     //                                                 0         1       2       3       4
-    QueryResult result = WorldDatabase.Query("SELECT CreatureID, ID, ItemID1, ItemID2, ItemID3 FROM creature_equip_template WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT CreatureID, ID, ItemID1, ItemID2, ItemID3 FROM creature_equip_template");
 
     if (!result)
     {
@@ -1798,7 +1796,7 @@ void ObjectMgr::LoadLinkedRespawn()
 
     _linkedRespawnStore.clear();
     //                                                 0        1          2
-    QueryResult result = WorldDatabase.Query("SELECT guid, linkedGuid, linkType FROM linked_respawn WHERE {} BETWEEN MinPatch AND MaxPatch ORDER BY guid ASC", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT guid, linkedGuid, linkType FROM linked_respawn ORDER BY guid ASC");
 
     if (!result)
     {
@@ -4602,8 +4600,7 @@ void ObjectMgr::LoadQuests()
     //                                   0   1         2                 3              4            5            6               7                     8
     result = WorldDatabase.Query("SELECT ID, MaxLevel, AllowableClasses, SourceSpellID, PrevQuestID, NextQuestID, ExclusiveGroup, RewardMailTemplateID, RewardMailDelay, "
                                  //9               10                   11                     12                     13                   14                   15                 16                     17
-                                 "RequiredSkillID, RequiredSkillPoints, RequiredMinRepFaction, RequiredMaxRepFaction, RequiredMinRepValue, RequiredMaxRepValue, ProvidedItemCount, RewardMailSenderEntry, SpecialFlags FROM quest_template_addon LEFT JOIN quest_mail_sender ON Id=QuestId "
-                                 "WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
+                                 "RequiredSkillID, RequiredSkillPoints, RequiredMinRepFaction, RequiredMaxRepFaction, RequiredMinRepValue, RequiredMaxRepValue, ProvidedItemCount, RewardMailSenderEntry, SpecialFlags FROM quest_template_addon LEFT JOIN quest_mail_sender ON Id=QuestId");
 
     if (!result)
     {
@@ -6553,7 +6550,7 @@ void ObjectMgr::LoadAreaTriggerScripts()
     uint32 oldMSTime = getMSTime();
 
     _areaTriggerScriptStore.clear();                            // need for reload case
-    QueryResult result = WorldDatabase.Query("SELECT entry, ScriptName FROM areatrigger_scripts WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT entry, ScriptName FROM areatrigger_scripts");
 
     if (!result)
     {
