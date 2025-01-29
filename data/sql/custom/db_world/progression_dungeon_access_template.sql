@@ -21,7 +21,7 @@ INSERT INTO `dungeon_access_template` (`id`, `map_id`, `difficulty`, `min_level`
 (15, 249, 0, 80, 0, 0, 'Onyxia\'s Lair - 10man', 19, 21),
 (16, 249, 1, 55, 0, 0, 'Onyxia\'s Lair - 25man', 0, 18),
 (16, 249, 1, 80, 0, 0, 'Onyxia\'s Lair - 25man', 19, 21),
-(30, 533, 0, 55, 0, 0, 'Naxxramas - 10man', 0, 16),
+(30, 533, 0, 51, 0, 0, 'Naxxramas - 10man', 0, 16),
 (30, 533, 0, 80, 0, 0, 'Naxxramas - 10man', 17, 21),
-(31, 533, 1, 55, 0, 0, 'Naxxramas', 0, 16),
+(31, 533, 1, 51, 0, 0, 'Naxxramas', 0, 16),
 (31, 533, 1, 80, 0, 0, 'Naxxramas', 17, 21);

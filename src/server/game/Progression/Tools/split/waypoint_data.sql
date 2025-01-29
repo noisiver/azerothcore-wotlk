@@ -1,22 +1,26 @@
-DELIMITER $$
-DROP PROCEDURE IF EXISTS AddColumn $$
-CREATE PROCEDURE AddColumn()
-BEGIN
-    IF NOT EXISTS((SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND COLUMN_NAME='MinPatch' AND TABLE_NAME='waypoint_data')) THEN
-        ALTER TABLE `waypoint_data`
-            ADD COLUMN `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `wpguid`,
-            ADD COLUMN `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21' AFTER `MinPatch`,
-            DROP PRIMARY KEY,
-            ADD PRIMARY KEY (`id`, `point`, `MinPatch`, `MaxPatch`) USING BTREE;
-    END IF;
-END $$
-CALL AddColumn()
-$$
-DELIMITER ;
-DROP PROCEDURE IF EXISTS AddColumn;
+DROP TABLE IF EXISTS `progression_world`.`waypoint_data`;
+CREATE TABLE `progression_world`.`waypoint_data` (
+    `id` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Creature GUID',
+    `point` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `position_x` FLOAT NOT NULL DEFAULT '0',
+    `position_y` FLOAT NOT NULL DEFAULT '0',
+    `position_z` FLOAT NOT NULL DEFAULT '0',
+    `orientation` FLOAT NULL DEFAULT NULL,
+    `delay` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `move_type` INT(10) NOT NULL DEFAULT '0',
+    `action` INT(10) NOT NULL DEFAULT '0',
+    `action_chance` SMALLINT(5) NOT NULL DEFAULT '100',
+    `wpguid` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0',
+    `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21',
+    PRIMARY KEY (`id`, `point`, `MinPatch`, `MaxPatch`) USING BTREE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+;
 
-DELETE FROM `waypoint_data` WHERE `id` IN (5200000, 5300002);
-INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`, `MinPatch`, `MaxPatch`) VALUES
+INSERT INTO `progression_world`.`waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`, `MinPatch`, `MaxPatch`) VALUES
+-- Lord Kazzak
 (5200000, 1, -12241.3, -2432.1, 2.93936, NULL, 0, 0, 0, 100, 0, 2, 11),
 (5200000, 2, -12271.6, -2453.36, 3.84158, NULL, 0, 0, 0, 100, 0, 2, 11),
 (5200000, 3, -12279.2, -2488.66, 4.38164, NULL, 0, 0, 0, 100, 0, 2, 11),
@@ -28,6 +32,7 @@ INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `positio
 (5200000, 9, -12166, -2478.6, 0.810272, NULL, 0, 0, 0, 100, 0, 2, 11),
 (5200000, 10, -12171.4, -2452.79, -0.15142, NULL, 0, 0, 0, 100, 0, 2, 11),
 (5200000, 11, -12208, -2436.73, 0.09382, NULL, 0, 0, 0, 100, 0, 2, 11),
+-- Argent Guard <The Argent Dawn>
 (5300002, 0, 2325.58, -5372.62, 85.9003, NULL, 0, 0, 0, 100, 0, 0, 9),
 (5300002, 1, 2332.74, -5363.57, 84.2833, NULL, 0, 0, 0, 100, 0, 0, 9),
 (5300002, 2, 2336.79, -5351.36, 83.5329, NULL, 0, 0, 0, 100, 0, 0, 9),
