@@ -24,6 +24,8 @@
 #include "SpellScriptLoader.h"
 #include "naxxramas.h"
 
+#include "Progression.h"
+
 enum Spells
 {
     SPELL_POISON_CLOUD                      = 28240,
@@ -103,9 +105,18 @@ public:
             PullChamberAdds();
             me->SetInCombatWithZone();
             events.ScheduleEvent(EVENT_POISON_CLOUD, 15s);
-            events.ScheduleEvent(EVENT_MUTATING_INJECTION, 20s);
-            events.ScheduleEvent(EVENT_SLIME_SPRAY, 10s);
-            events.ScheduleEvent(EVENT_BERSERK, RAID_MODE(720000, 540000));
+            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+            {
+                events.ScheduleEvent(EVENT_MUTATING_INJECTION, 12s);
+                events.ScheduleEvent(EVENT_SLIME_SPRAY, urand(20000, 30000));
+                events.ScheduleEvent(EVENT_BERSERK, 12min);
+            }
+            else
+            {
+                events.ScheduleEvent(EVENT_MUTATING_INJECTION, 20s);
+                events.ScheduleEvent(EVENT_SLIME_SPRAY, 10s);
+                events.ScheduleEvent(EVENT_BERSERK, RAID_MODE(720000, 540000));
+            }
         }
 
         void SpellHitTarget(Unit* target, SpellInfo const* spellInfo) override
@@ -175,14 +186,35 @@ public:
                 case EVENT_SLIME_SPRAY:
                     Talk(EMOTE_SLIME);
                     me->CastSpell(me->GetVictim(), RAID_MODE(SPELL_SLIME_SPRAY_10, SPELL_SLIME_SPRAY_25), false);
-                    events.Repeat(20s);
+                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                    {
+                        events.RepeatEvent(urand(30000, 35000));
+                    }
+                    else
+                    {
+                        events.Repeat(20s);
+                    }
                     break;
                 case EVENT_MUTATING_INJECTION:
                     if (Unit* target = SelectTarget(SelectTargetMethod::Random, 1, 100.0f, true, true, -SPELL_MUTATING_INJECTION))
                     {
                         me->CastSpell(target, SPELL_MUTATING_INJECTION, false);
                     }
-                    events.RepeatEvent(6000 + uint32(120 * me->GetHealthPct()));
+                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                    {
+                        if (me->GetHealthPct() > 30.0)
+                        {
+                            events.RepeatEvent(urand(7000, 13000));
+                        }
+                        else
+                        {
+                            events.RepeatEvent(urand(3000, 7000));
+                        }
+                    }
+                    else
+                    {
+                        events.RepeatEvent(6000 + uint32(120 * me->GetHealthPct()));
+                    }
                     break;
             }
             DoMeleeAttackIfReady();

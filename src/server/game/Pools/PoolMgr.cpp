@@ -672,7 +672,7 @@ void PoolMgr::LoadFromDB()
         uint32 oldMSTime = getMSTime();
 
         //                                                 1        2         3
-        QueryResult result = WorldDatabase.Query("SELECT guid, pool_entry, chance FROM pool_gameobject");
+        QueryResult result = WorldDatabase.Query("SELECT guid, pool_entry, chance FROM pool_gameobject WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
 
         if (!result)
         {

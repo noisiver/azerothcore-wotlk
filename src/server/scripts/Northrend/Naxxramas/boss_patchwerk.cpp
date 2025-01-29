@@ -19,6 +19,8 @@
 #include "ScriptedCreature.h"
 #include "naxxramas.h"
 
+#include "Progression.h"
+
 enum Yells
 {
     SAY_AGGRO                       = 0,
@@ -102,10 +104,10 @@ public:
             BossAI::JustEngagedWith(who);
             Talk(SAY_AGGRO);
             me->SetInCombatWithZone();
-            events.ScheduleEvent(EVENT_HATEFUL_STRIKE, 1500ms);
-            events.ScheduleEvent(EVENT_BERSERK, 6min);
+                events.ScheduleEvent(EVENT_HATEFUL_STRIKE, sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 1200ms : 1500ms);
+                events.ScheduleEvent(EVENT_BERSERK, sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? 7min : 6min);
             events.ScheduleEvent(EVENT_HEALTH_CHECK, 1s);
-            if (pInstance)
+            if (pInstance && sProgression->GetPatchId() >= PATCH_ECHOES_OF_DOOM)
             {
                 pInstance->DoStartTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_TIMED_START_EVENT);
             }
@@ -138,7 +140,13 @@ public:
                                 meleeRangeTargets.push_back(target);
                             }
                             // and add threat to most hated
-                            if (counter < RAID_MODE(2, 3))
+                            int numPlayers = RAID_MODE(2, 3);
+                            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                            {
+                                numPlayers = 4;
+                            }
+
+                            if (counter < numPlayers)
                             {
                                 me->AddThreat(target, 500.0f);
                             }
@@ -173,7 +181,10 @@ public:
                 case EVENT_BERSERK:
                     Talk(EMOTE_BERSERK);
                     me->CastSpell(me, SPELL_BERSERK, true);
-                    events.ScheduleEvent(EVENT_SLIME_BOLT, 3s);
+                    if (sProgression->GetPatchId() >= PATCH_DRUMS_OF_WAR)
+                    {
+                        events.ScheduleEvent(EVENT_SLIME_BOLT, 3s);
+                    }
                     break;
                 case EVENT_SLIME_BOLT:
                     me->CastSpell(me, SPELL_SLIME_BOLT, false);
