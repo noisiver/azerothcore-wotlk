@@ -24,20 +24,6 @@ windows_paths = {
 # table name, type (min/max or patch), add column(s) after this column, primary keys with new columns, delete queries before inserts
 tables = [
     [
-        'areatrigger', # DONE
-        0,
-        'orientation',
-        '`entry`, `MinPatch`, `MaxPatch`',
-        'DELETE FROM `areatrigger` WHERE `entry`=4055;'
-    ],
-    [
-        'areatrigger_teleport', # DONE
-        0,
-        'target_orientation',
-        '`ID`, `MinPatch`, `MaxPatch`',
-        'DELETE FROM `areatrigger_teleport` WHERE `ID` IN (4055, 5196, 5197, 5198, 5199);'
-    ],
-    [
         'broadcast_text', # DONE
         1,
         'ID',
@@ -153,7 +139,7 @@ tables = [
         0,
         'comment',
         '`id`, `MinPatch`, `MaxPatch`',
-        'DELETE FROM `dungeon_access_template` WHERE `map_id` IN (249, 533);'
+        'DELETE FROM `dungeon_access_template` WHERE `map_id`=249;'
     ],
     [
         'fishing_loot_template', # NOT DONE
@@ -446,6 +432,10 @@ def DropTables():
     PrintHeader('Dropping tables')
     connect = pymysql.connect(host=mysql['host'], user=mysql['username'], password=mysql['password'], db=mysql['base'])
     cursor = connect.cursor()
+
+    cursor.execute(f'DROP TABLE IF EXISTS creature_sparring;')
+    connect.commit()
+
     cursor.execute('SHOW TABLES;')
     tables = []
     for d in cursor.fetchall():
