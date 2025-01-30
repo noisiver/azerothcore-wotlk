@@ -18,8 +18,7 @@ CREATE TABLE `progression_world`.`broadcast_text` (
     PRIMARY KEY (`ID`, `Patch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`broadcast_text`
 SELECT `ID`, 17 AS `Patch`, `LanguageID`, `MaleText`, `FemaleText`, `EmoteID1`, `EmoteID2`, `EmoteID3`, `EmoteDelay1`, `EmoteDelay2`, `EmoteDelay3`, `SoundEntriesId`, `EmotesID`, `Flags`, `VerifiedBuild` FROM `base_world`.`broadcast_text` WHERE `ID` IN (

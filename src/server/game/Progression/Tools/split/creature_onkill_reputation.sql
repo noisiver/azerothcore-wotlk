@@ -15,8 +15,7 @@ CREATE TABLE `progression_world`.`creature_onkill_reputation` (
 )
 COMMENT='Creature OnKill Reputation gain'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_onkill_reputation`
 SELECT `creature_id`, 14 AS `Patch`, `RewOnKillRepFaction1`, `RewOnKillRepFaction2`, `MaxStanding1`, `IsTeamAward1`, `RewOnKillRepValue1`, `MaxStanding2`, `IsTeamAward2`, `RewOnKillRepValue2`, `TeamDependent` FROM `base_world`.`creature_onkill_reputation` WHERE `creature_id` IN (

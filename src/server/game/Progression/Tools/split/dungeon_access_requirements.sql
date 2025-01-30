@@ -14,8 +14,7 @@ CREATE TABLE `progression_world`.`dungeon_access_requirements` (
 )
 COMMENT='Add (multiple) requirements before being able to enter a dungeon/raid'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`dungeon_access_requirements` (`dungeon_access_id`, `requirement_type`, `requirement_id`, `requirement_note`, `faction`, `priority`, `leader_only`, `comment`, `MinPatch`, `MaxPatch`) VALUES
 -- Karazhan

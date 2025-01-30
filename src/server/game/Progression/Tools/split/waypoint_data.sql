@@ -16,8 +16,7 @@ CREATE TABLE `progression_world`.`waypoint_data` (
     PRIMARY KEY (`id`, `point`, `MinPatch`, `MaxPatch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`, `MinPatch`, `MaxPatch`) VALUES
 -- Lord Kazzak

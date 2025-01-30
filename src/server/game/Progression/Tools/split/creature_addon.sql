@@ -13,8 +13,7 @@ CREATE TABLE `progression_world`.`creature_addon` (
     PRIMARY KEY (`guid`, `MinPatch`, `MaxPatch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_addon`
 SELECT ca.`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`, 21 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_addon` ca LEFT OUTER JOIN `base_world`.`creature` c ON c.`guid` = ca.`guid` WHERE c.`id1` IN (

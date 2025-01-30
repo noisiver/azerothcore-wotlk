@@ -11,8 +11,7 @@ CREATE TABLE `progression_world`.`creature_template_model` (
     CONSTRAINT `creature_template_model_chk_1` CHECK ((`Idx` <= 3))
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_template_model`
 SELECT `CreatureID`, `Idx`, 20 AS `Patch`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID` IN (

@@ -36,8 +36,7 @@ CREATE TABLE `progression_world`.`creature`(
 COMMENT='Creature System'
 COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1
-;
+AUTO_INCREMENT=1;
 
 INSERT INTO `progression_world`.`creature`
 SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, 21 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature` WHERE `id1` IN (

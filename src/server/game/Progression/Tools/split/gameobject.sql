@@ -28,8 +28,7 @@ CREATE TABLE `progression_world`.`gameobject` (
 COMMENT='Gameobject System'
 COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1
-;
+AUTO_INCREMENT=1;
 
 INSERT INTO `progression_world`.`gameobject`
 SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`, 21 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject` WHERE `guid` IN (

@@ -19,8 +19,7 @@ CREATE TABLE `progression_world`.`creature_text` (
     CONSTRAINT `creature_text_chk_1` CHECK ((`Probability` >= 0))
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`, `MinPatch`, `MaxPatch`) VALUES
 -- Lord Kazzak

@@ -9,8 +9,7 @@ CREATE TABLE `progression_world`.`mail_level_reward` (
 )
 COMMENT='Mail System'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`mail_level_reward`
 SELECT `level`, `raceMask`, `mailTemplateId`, `senderEntry`, 20 AS `Patch` FROM `base_world`.`mail_level_reward`;

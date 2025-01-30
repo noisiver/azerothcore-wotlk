@@ -6,8 +6,7 @@ CREATE TABLE `progression_world`.`player_xp_for_level` (
     PRIMARY KEY (`Level`, `Patch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`player_xp_for_level`
 SELECT `Level`, 0 AS `Patch`, 8800 AS `Experience` FROM `base_world`.`player_xp_for_level` WHERE `Level`=11

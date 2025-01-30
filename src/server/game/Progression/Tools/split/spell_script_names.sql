@@ -5,8 +5,7 @@ CREATE TABLE `progression_world`.`spell_script_names` (
 	UNIQUE INDEX `spell_id` (`spell_id`, `ScriptName`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`spell_script_names` (`spell_id`, `ScriptName`) VALUES
 (21056, 'spell_mark_of_kazzak');

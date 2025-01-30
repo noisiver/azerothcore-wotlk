@@ -12,8 +12,7 @@ CREATE TABLE `progression_world`.`creature_template_addon` (
     PRIMARY KEY (`entry`, `Patch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_template_addon`
 SELECT `entry`, 20 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (

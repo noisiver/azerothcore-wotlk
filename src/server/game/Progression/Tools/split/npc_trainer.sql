@@ -12,8 +12,7 @@ CREATE TABLE `progression_world`.`npc_trainer` (
     PRIMARY KEY (`ID`, `SpellID`, `MinPatch`, `MaxPatch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`npc_trainer`
 SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`npc_trainer` WHERE `SpellID` IN (

@@ -15,8 +15,7 @@ CREATE TABLE  `progression_world`.`dungeon_access_template` (
 COMMENT='Dungeon/raid access template and single requirements'
 COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1
-;
+AUTO_INCREMENT=1;
 
 INSERT INTO  `progression_world`.`dungeon_access_template`
 SELECT `id`, `map_id`, `difficulty`, `min_level`, `max_level`, `min_avg_item_level`, `comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`dungeon_access_template` WHERE `map_id` IN (

@@ -14,8 +14,7 @@ CREATE TABLE `progression_world`.`npc_vendor` (
 )
 COMMENT='Npc System'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`npc_vendor`
 SELECT `entry`, `slot`, `item`, `maxcount`, `incrtime`, `ExtendedCost`, `VerifiedBuild`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`npc_vendor` WHERE `entry` IN (

@@ -11,8 +11,7 @@ CREATE TABLE `progression_world`.`transports` (
 COMMENT='Transports'
 COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1
-;
+AUTO_INCREMENT=1;
 
 INSERT INTO `progression_world`.`transports`
 SELECT `guid`, 12 AS `Patch`, `entry`, `name`, `ScriptName` FROM `base_world`.`transports` WHERE `guid` IN (

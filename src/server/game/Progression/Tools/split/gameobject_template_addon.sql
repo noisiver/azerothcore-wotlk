@@ -13,8 +13,7 @@ CREATE TABLE `progression_world`.`gameobject_template_addon` (
     PRIMARY KEY (`entry`, `Patch`) USING BTREE
 )
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`gameobject_template_addon`
 SELECT `entry`, 17 AS `Patch`, `faction`, `flags`, `mingold`, `maxgold`, `artkit0`, `artkit1`, `artkit2`, `artkit3` FROM `base_world`.`gameobject_template_addon` WHERE `entry` IN (
