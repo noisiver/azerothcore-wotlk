@@ -69,68 +69,6 @@ INSERT INTO `progression_world`.`creature_loot_template` (`Entry`, `Item`, `Refe
 (10184, 46007, 46007, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
 (10184, 46008, 46008, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18);
 
-DROP TABLE IF EXISTS `progression_world`.`gameobject_loot_template`;
-CREATE TABLE `progression_world`.`gameobject_loot_template` (
-    `Entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Item` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Reference` INT(10) NOT NULL DEFAULT '0',
-    `Chance` FLOAT NOT NULL DEFAULT '100',
-    `QuestRequired` TINYINT(3) NOT NULL DEFAULT '0',
-    `LootMode` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '1',
-    `GroupId` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-    `MinCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `MaxCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `Comment` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
-    `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0',
-    `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21',
-    PRIMARY KEY (`Entry`, `Item`, `MinPatch`, `MaxPatch`) USING BTREE
-)
-COMMENT='Loot System'
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
-
-INSERT INTO `progression_world`.`gameobject_loot_template`
-SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=50289
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 6 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item` IN (19803, 19805, 19806, 19807, 19808)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 3 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=18646
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (24524, 24589, 25192, 25193, 26094, 26097, 26260, 26929, 26946, 26955, 26956, 26959, 26960, 26961, 26962, 26963, 26967, 26974, 27030, 27061, 27068, 27073, 27074, 27078, 27079, 27080, 27081, 27085, 27086, 27414, 27416, 27417)
-UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (24524, 24589, 25192, 25193, 26094, 26097, 26260, 26956, 26962, 27030, 27061, 27068, 27073, 27085, 27086, 27414, 27416, 27417)
-UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 18 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (26929, 26946, 26955, 26959, 26960, 26961, 26963, 26967, 26974, 27074, 27078, 27079, 27080, 27081)
-UNION SELECT `Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 18 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (26956, 26962, 27030, 27061, 27068, 27073, 27085, 27086)
-UNION SELECT `Entry`, 40752 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (24524, 24589, 25192, 26094, 26260)
-UNION SELECT `Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item`=47241 AND `Entry` IN (25193, 26097);
-
-DROP TABLE IF EXISTS `progression_world`.`item_loot_template`;
-CREATE TABLE `progression_world`.`item_loot_template` (
-    `Entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Item` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Reference` INT(10) NOT NULL DEFAULT '0',
-    `Chance` FLOAT NOT NULL DEFAULT '100',
-    `QuestRequired` TINYINT(3) NOT NULL DEFAULT '0',
-    `LootMode` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '1',
-    `GroupId` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-    `MinCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `MaxCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `Comment` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
-    `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0',
-    `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21',
-    PRIMARY KEY (`Entry`, `Item`, `MinPatch`, `MaxPatch`) USING BTREE
-)
-COMMENT='Loot System'
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
-
-INSERT INTO `progression_world`.`item_loot_template`
-SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry` IN (43346, 43347, 45875, 45878)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=49426 AND `Entry` IN (54516, 54535, 54536)
-UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry` IN (43347, 45875)
-UNION SELECT `Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 18 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry` IN (43347, 45875)
-UNION SELECT `Entry`, 40752 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 17 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry`=43347
-UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 18 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry` IN (43346, 45878)
-UNION SELECT `Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 17 AS `MaxPatch` FROM `base_world`.`item_loot_template` WHERE `Item`=47241 AND `Entry`=43346;
-
 DROP TABLE IF EXISTS `progression_world`.`reference_loot_template`;
 CREATE TABLE `progression_world`.`reference_loot_template` (
     `Entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
