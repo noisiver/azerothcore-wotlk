@@ -3,6 +3,9 @@ DROP PROCEDURE IF EXISTS AddColumn $$
 CREATE PROCEDURE AddColumn()
 BEGIN
     IF NOT EXISTS((SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND COLUMN_NAME='MinPatch' AND TABLE_NAME='creature')) THEN
+        ALTER TABLE `creature_sparring`
+            DROP FOREIGN KEY `creature_sparring_ibfk_1`;
+
         ALTER TABLE `creature`
             ADD COLUMN `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `Comment`,
             ADD COLUMN `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21' AFTER `MinPatch`,

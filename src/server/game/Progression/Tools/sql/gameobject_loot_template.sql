@@ -16,8 +16,7 @@ CREATE TABLE `progression_world`.`gameobject_loot_template` (
 )
 COMMENT='Loot System'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`gameobject_loot_template`
 SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject_loot_template` WHERE `Item` IN (

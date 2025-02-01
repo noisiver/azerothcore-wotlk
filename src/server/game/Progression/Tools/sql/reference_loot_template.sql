@@ -1,74 +1,3 @@
-/*
-SET @Entry := '17413,17414,17682,17683,18600,18646,18665,18705,18987,19803,19805,19806,19807,19808,21877,27859,27860,31952,50289';
-SELECT DISTINCT(item) FROM creature_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM disenchant_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM fishing_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM gameobject_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM item_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM mail_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM milling_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM pickpocketing_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM player_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM prospecting_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM reference_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM skinning_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-SELECT DISTINCT(item) FROM spell_loot_template WHERE FIND_IN_SET(item, @Entry) ORDER BY item ASC;
-*/
-
-DROP TABLE IF EXISTS `progression_world`.`creature_loot_template`;
-CREATE TABLE `progression_world`.`creature_loot_template` (
-    `Entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Item` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-    `Reference` INT(10) NOT NULL DEFAULT '0',
-    `Chance` FLOAT NOT NULL DEFAULT '100',
-    `QuestRequired` TINYINT(3) NOT NULL DEFAULT '0',
-    `LootMode` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '1',
-    `GroupId` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-    `MinCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `MaxCount` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-    `Comment` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
-    `MinPatch` INT UNSIGNED NOT NULL DEFAULT '0',
-    `MaxPatch` INT UNSIGNED NOT NULL DEFAULT '21',
-    PRIMARY KEY (`Entry`, `Item`, `Reference`, `GroupId`, `MinPatch`, `MaxPatch`) USING BTREE
-)
-COMMENT='Loot System'
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
-
-INSERT INTO `progression_world`.`creature_loot_template`
-SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 1 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item` IN (17413, 17414, 17682, 17683, 18600)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 3 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item` IN (18665, 18705)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 5 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item`=18987
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 8 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item` IN (21103, 21104, 21105, 21108, 21110)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 12 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item` IN (21877, 27859, 27860, 31952)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item`=49205
-UNION SELECT `Entry`, 17008 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item`=49205
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry`=10184 AND `Item` NOT IN (18705, 21108, 47241)
-UNION SELECT `Entry`, 18422 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 2 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry`=10184 AND `Item`=49643
-UNION SELECT `Entry`, 18423 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 2 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry`=10184 AND `Item`=49644
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item`=47241 AND `Entry` IN (10184, 15928, 15931, 15932, 15936, 15952, 15953, 15954, 15956, 15989, 15990, 16011, 16028, 16060, 16061, 28860, 29249, 29268, 29278, 29324, 29373, 29417, 29448, 29615, 29701, 29718, 29932, 29940, 29955, 29991, 30061, 30397, 30398, 30510, 30529, 30530, 30532, 30540, 30748, 30774, 30788, 30807, 30810, 31125, 31211, 31212, 31215, 31311, 31349, 31350, 31360, 31362, 31367, 31368, 31370, 31381, 31384, 31386, 31456, 31463, 31464, 31465, 31469, 31506, 31507, 31508, 31509, 31510, 31511, 31512, 31533, 31536, 31537, 31538, 31558, 31559, 31560, 31610, 31611, 31612, 31656, 31673, 31679, 31722, 32313, 32857, 32867, 32927, 33118, 33186, 33190, 33271, 33288, 33293, 33449, 33515, 33692, 33693, 33694, 33724, 33885, 33955, 33993, 33994, 34175, 35013, 35360, 35490, 36538)
-UNION (SELECT clt.`Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, clt.`MaxCount`, CONCAT(ct.`Name`, ' - Emblem of Conquest') AS `Comment`, 19 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`creature_loot_template` clt LEFT OUTER JOIN `base_world`.`creature_template` ct ON ct.`entry`=clt.`Entry` WHERE `Item`=47241 AND clt.`Entry` IN (10184, 15928, 15931, 15932, 15936, 15952, 15953, 15954, 15956, 15989, 15990, 16011, 16028, 16060, 16061, 28860, 29249, 29268, 29278, 29324, 29373, 29417, 29448, 29615, 29701, 29718, 29932, 29940, 29955, 29991, 30061, 30397, 30398, 30510, 30529, 30530, 30532, 30540, 30748, 30774, 30788, 30807, 30810, 31125, 31211, 31212, 31215, 31311, 31349, 31350, 31360, 31362, 31367, 31368, 31370, 31381, 31384, 31386, 31456, 31463, 31464, 31465, 31469, 31506, 31507, 31508, 31509, 31510, 31511, 31512, 31533, 31536, 31537, 31538, 31558, 31559, 31560, 31610, 31611, 31612, 31656, 31673, 31679, 31722, 32313, 32857, 32867, 32927, 33118, 33186, 33271, 33288, 33293, 33515, 35013, 35360, 35490, 36538))
-UNION (SELECT clt.`Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, clt.`MaxCount`, CONCAT(ct.`Name`, ' - Emblem of Valor') AS `Comment`, 18 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`creature_loot_template` clt LEFT OUTER JOIN `base_world`.`creature_template` ct ON ct.`entry`=clt.`Entry` WHERE `Item`=47241 AND clt.`Entry` IN (32857, 32867, 32927, 33118, 33186, 33271, 33288, 33293, 33515))
-UNION (SELECT clt.`Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, clt.`MaxCount`, CONCAT(ct.`Name`, ' - Emblem of Conquest') AS `Comment`, 18 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`creature_loot_template` clt LEFT OUTER JOIN `base_world`.`creature_template` ct ON ct.`entry`=clt.`Entry` WHERE `Item`=47241 AND clt.`Entry` IN (33190, 33449, 33692, 33693, 33694, 33724, 33885, 33955, 33993, 33994, 34175))
-UNION (SELECT clt.`Entry`, 40752 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, clt.`MaxCount`, CONCAT(ct.`Name`, ' - Emblem of Heroism') AS `Comment`, 17 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`creature_loot_template` clt LEFT OUTER JOIN `base_world`.`creature_template` ct ON ct.`entry`=clt.`Entry` WHERE `Item`=47241 AND clt.`Entry` IN (15928, 15931, 15932, 15936, 15952, 15953, 15954, 15956, 15989, 15990, 16011, 16028, 16060, 16061, 28860, 29932, 30397, 30398, 30510, 30529, 30530, 30532, 30540, 30748, 30774, 30788, 30807, 30810, 31125, 31211, 31212, 31215, 31349, 31350, 31360, 31362, 31367, 31368, 31370, 31381, 31384, 31386, 31456, 31463, 31464, 31465, 31469, 31506, 31507, 31508, 31509, 31510, 31511, 31512, 31533, 31536, 31537, 31538, 31558, 31559, 31560, 31610, 31611, 31612, 31656, 31673, 31679, 32313))
-UNION (SELECT clt.`Entry`, 40753 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, clt.`MaxCount`, CONCAT(ct.`Name`, ' - Emblem of Valor') AS `Comment`, 17 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`creature_loot_template` clt LEFT OUTER JOIN `base_world`.`creature_template` ct ON ct.`entry`=clt.`Entry` WHERE `Item`=47241 AND clt.`Entry` IN (29249, 29268, 29278, 29324, 29373, 29417, 29448, 29615, 29701, 29718, 29940, 29955, 29991, 30061, 31311, 31722))
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry`=31311 AND `Reference`=34349
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry` IN (69, 299) AND `Item`=50432
-UNION SELECT `Entry`, 750 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Entry` IN (69, 299) AND `Item`=50432;
-
-INSERT INTO `progression_world`.`creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
-(10184, 17966, 0, 100, 0, 1, 0, 1, 1, 'Onyxia - Onyxia Hide Backpack', 0, 18),
-(10184, 46000, 46000, 100, 0, 1, 0, 2, 2, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46001, 46001, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46002, 46002, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46003, 46003, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46004, 46004, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46005, 46005, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46006, 46006, 100, 0, 1, 0, 2, 2, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46007, 46007, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
-(10184, 46008, 46008, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18);
-
 DROP TABLE IF EXISTS `progression_world`.`reference_loot_template`;
 CREATE TABLE `progression_world`.`reference_loot_template` (
     `Entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -87,18 +16,33 @@ CREATE TABLE `progression_world`.`reference_loot_template` (
 )
 COMMENT='Loot System'
 COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`reference_loot_template`
-SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item`=50289
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34000
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 6 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (19803, 19805, 19806, 19807, 19808)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 1 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (17413, 17414, 17682, 17683, 18600)
-UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item`=47241
-UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item`=47241;
+SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (
+    50289 -- Blacktip Shark
+) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item` IN (
+    47241 -- Emblem of Triumph
+) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry` IN (
+    34000 -- Onyxia
+) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 6 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (
+    19803, -- Brownell's Blue Striped Racer
+    19805, -- Keefer's Angelfish
+    19806, -- Dezian Queenfish
+    19807, -- Speckled Tastyfish
+    19808 -- Rockhide Strongfish
+) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 1 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (
+    17413, -- Codex: Prayer of Fortitude
+    17414, -- Codex: Prayer of Fortitude II
+    17682, -- Book: Gift of the Wild
+    17683, -- Book: Gift of the Wild II
+    18600 -- Tome of Arcane Brilliance
+) UNION SELECT `Entry`, 45624 AS `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 0 AS `MinPatch`, 19 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry`=34349 AND `Item` IN (
+    47241 -- Emblem of Triumph
+);
 
 INSERT INTO `progression_world`.`reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+-- Onyxia's Lair
 (46000, 16900, 0, 0, 0, 1, 1, 1, 1, 'Stormrage Cover', 0, 18),
 (46000, 16908, 0, 0, 0, 1, 1, 1, 1, 'Bloodfang Hood', 0, 18),
 (46000, 16914, 0, 0, 0, 1, 1, 1, 1, 'Netherwind Crown', 0, 18),
