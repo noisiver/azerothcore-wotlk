@@ -15,9 +15,13 @@ $$
 DELIMITER ;
 DROP PROCEDURE IF EXISTS AddColumn;
 
-DELETE FROM `dungeon_access_template` WHERE `map_id`=249;
+DELETE FROM `dungeon_access_template` WHERE `map_id` IN (249, 533);
 INSERT INTO `dungeon_access_template` (`id`, `map_id`, `difficulty`, `min_level`, `max_level`, `min_avg_item_level`, `comment`, `MinPatch`, `MaxPatch`) VALUES
 (15, 249, 0, 55, 0, 0, 'Onyxia\'s Lair - 10man', 0, 18),
 (15, 249, 0, 80, 0, 0, 'Onyxia\'s Lair - 10man', 19, 21),
 (16, 249, 1, 55, 0, 0, 'Onyxia\'s Lair - 25man', 0, 18),
-(16, 249, 1, 80, 0, 0, 'Onyxia\'s Lair - 25man', 19, 21);
+(16, 249, 1, 80, 0, 0, 'Onyxia\'s Lair - 25man', 19, 21),
+(30, 533, 0, 51, 0, 0, 'Naxxramas - 10man', 0, 16),
+(30, 533, 0, 80, 0, 0, 'Naxxramas - 10man', 19, 21),
+(31, 533, 1, 51, 0, 0, 'Naxxramas', 0, 16),
+(31, 533, 1, 80, 0, 0, 'Naxxramas', 19, 21);

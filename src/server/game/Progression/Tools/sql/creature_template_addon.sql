@@ -22,3 +22,11 @@ SELECT `entry`, 20 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, 
     69, -- Diseased Timber Wolf
     299 -- Diseased Young Wolf
 );
+
+-- Naxxramas
+INSERT INTO `progression_world`.`creature_template_addon`
+SELECT `entry`, 17 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    16244 -- Infectious Ghoul
+) UNION SELECT `entry`, 0 AS `Patch`, `path_id`, `mount`, `bytes1`, 1 AS `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    16244 -- Infectious Ghoul
+);

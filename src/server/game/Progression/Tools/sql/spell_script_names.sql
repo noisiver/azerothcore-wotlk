@@ -8,4 +8,5 @@ COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`spell_script_names` (`spell_id`, `ScriptName`) VALUES
-(21056, 'spell_mark_of_kazzak');
+(21056, 'spell_mark_of_kazzak'),
+(29201, 'spell_corrupted_mind');

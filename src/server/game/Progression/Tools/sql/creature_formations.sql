@@ -27,3 +27,24 @@ INSERT INTO `progression_world`.`creature_formations` (`leaderGUID`, `memberGUID
 -- Argent Guard <The Argent Dawn>
 (5300002, 5300002, 0, 0, 2, 0, 0, 0, 9),
 (5300002, 5300003, 3, 90, 513, 0, 0, 0, 9);
+
+-- Naxxramas
+INSERT INTO `progression_world`.`creature_formations` (`leaderGUID`, `memberGUID`, `dist`, `angle`, `groupAI`, `point_1`, `point_2`, `MinPatch`, `MaxPatch`) VALUES
+-- Infectious Ghoul
+(5400000, 5400000, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400000, 128040, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400000, 128041, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400000, 128046, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400000, 128047, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+-- Infectious Ghoul
+(5400001, 5400001, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400001, 128036, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400001, 128037, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400001, 128042, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400001, 128043, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+-- Infectious Ghoul
+(5400002, 5400002, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400002, 128039, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400002, 128038, 0, 0, 3, 0, 0, 0, 16), -- Plague Slime
+(5400002, 128044, 0, 0, 3, 0, 0, 0, 16), -- Infectious Ghoul
+(5400002, 128045, 0, 0, 3, 0, 0, 0, 16); -- Infectious Ghoul

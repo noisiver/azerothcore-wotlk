@@ -19,7 +19,10 @@ AUTO_INCREMENT=1;
 
 INSERT INTO  `progression_world`.`dungeon_access_template`
 SELECT `id`, `map_id`, `difficulty`, `min_level`, `max_level`, `min_avg_item_level`, `comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`dungeon_access_template` WHERE `map_id` IN (
-    249 -- Onyxia's Lair
+    249, -- Onyxia's Lair
+    533 -- Naxxramas
 ) UNION SELECT `id`, `map_id`, `difficulty`, 55 AS `min_level`, `max_level`, `min_avg_item_level`, `comment`, 0 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`dungeon_access_template` WHERE `map_id` IN (
     249 -- Onyxia's Lair
+) UNION SELECT `id`, `map_id`, `difficulty`, 51 AS `min_level`, `max_level`, `min_avg_item_level`, `comment`, 0 AS `MinPatch`, 16 AS `MaxPatch` FROM `base_world`.`dungeon_access_template` WHERE `map_id` IN (
+    533 -- Onyxia's Lair
 );

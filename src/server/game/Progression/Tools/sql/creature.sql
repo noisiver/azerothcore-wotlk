@@ -721,3 +721,17 @@ INSERT INTO `progression_world`.`creature`(`guid`, `id1`, `id2`, `id3`, `map`, `
 (5300005, 1749, 0, 0, 0, 0, 0, 1, 1, 1, -8439.61, 334.384, 122.58, 2.2081, 180, 0, 0, 1, 0, 0, 0, 0, 0, '', NULL, 0, NULL, 0, 16),
 -- Guard Didier <Brotherhood of the Light>
 (5300006, 16226, 0, 0, 0, 0, 0, 1, 1, 0, 2305.29, -5286.12, 82.0618, 4.83456, 120, 0, 0, 1, 0, 0, 0, 0, 0, '', NULL, 0, NULL, 10, 21);
+
+-- Naxxramas
+INSERT INTO `progression_world`.`creature`
+SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, 17 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature` WHERE `id1` IN (
+    16244 -- Infectious Ghoul
+) UNION SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, 1 AS `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, 94320 AS `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, 0 AS `MinPatch`, 16 AS `MaxPatch` FROM `base_world`.`creature` WHERE `id1` IN (
+    16244 -- Infectious Ghoul
+);
+
+INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+-- Infectious Ghoul
+(5400000, 16244, 0, 0, 533, 0, 0, 1, 3, 1, 2933.66, -3514.18, 297.668, 2.38609, 3600, 0, 0, 94320, 0, 0, 0, 0, 0, '', NULL, 0, 0, 0, 16),
+(5400001, 16244, 0, 0, 533, 0, 0, 1, 3, 1, 2874.58, -3549.41, 297.614, 0.506543, 3600, 0, 0, 94320, 0, 0, 0, 0, 0, '', NULL, 0, 0, 0, 16),
+(5400002, 16244, 0, 0, 533, 0, 0, 1, 3, 1, 2899.21, -3482.52, 297.867, 3.84292, 3600, 0, 0, 94320, 0, 0, 0, 0, 0, '', NULL, 0, 0, 0, 16);

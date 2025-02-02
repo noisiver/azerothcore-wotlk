@@ -38,7 +38,7 @@ INSERT INTO `progression_world`.`disables` (`sourceType`, `entry`, `flags`, `par
 (2, 509, 1, '', '', 'Ruins of AhnQiraj', 0, 7),
 (2, 531, 1, '', '', 'Temple of AhnQiraj', 0, 7),
 (2, 532, 1, '', '', 'Karazhan', 0, 11),
-(2, 533, 3, '', '', 'Naxxramas', 0, 16),
+(2, 533, 3, '', '', 'Naxxramas', 0, 9),
 (2, 534, 1, '', '', 'Hyjal Summit', 0, 11),
 (2, 540, 3, '', '', 'The Shattered Halls', 0, 11),
 (2, 542, 3, '', '', 'The Blood Furnace', 0, 11),

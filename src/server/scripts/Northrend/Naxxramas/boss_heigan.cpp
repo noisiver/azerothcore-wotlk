@@ -20,6 +20,8 @@
 #include "ScriptedCreature.h"
 #include "naxxramas.h"
 
+#include "Progression.h"
+
 enum Says
 {
     SAY_AGGRO                       = 0,
@@ -188,7 +190,14 @@ public:
                     events.Repeat(10s);
                     break;
                 case EVENT_DECEPIT_FEVER:
-                    me->CastSpell(me, RAID_MODE(SPELL_DECREPIT_FEVER_10, SPELL_DECREPIT_FEVER_25), false);
+                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                    {
+                        me->CastSpell(me, SPELL_DECREPIT_FEVER_10, false);
+                    }
+                    else
+                    {
+                        me->CastSpell(me, RAID_MODE(SPELL_DECREPIT_FEVER_10, SPELL_DECREPIT_FEVER_25), false);
+                    }
                     events.Repeat(22s, 25s);
                     break;
                 case EVENT_PLAGUE_CLOUD:

@@ -25,6 +25,8 @@
 #include "ScriptedCreature.h"
 #include "naxxramas.h"
 
+#include "Progression.h"
+
 static constexpr uint8 HorsemanCount = 4;
 
 const float HeiganPos[2] = {2796, -3707};
@@ -541,6 +543,11 @@ public:
 
         bool CheckAchievementCriteriaMeet(uint32 criteria_id, Player const*  /*source*/, Unit const*  /*target*/, uint32  /*miscvalue1*/) override
         {
+            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+            {
+                return false;
+            }
+
             switch (criteria_id)
             {
                 case 7600: // And They Would All Go Down Together (10 player)

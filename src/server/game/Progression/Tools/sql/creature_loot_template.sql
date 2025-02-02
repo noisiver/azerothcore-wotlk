@@ -390,3 +390,147 @@ INSERT INTO `progression_world`.`creature_loot_template` (`Entry`, `Item`, `Refe
 (10184, 46006, 46006, 100, 0, 1, 0, 2, 2, 'Onyxia - (ReferenceTable)', 0, 18),
 (10184, 46007, 46007, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18),
 (10184, 46008, 46008, 100, 0, 1, 0, 1, 1, 'Onyxia - (ReferenceTable)', 0, 18);
+
+-- Naxxramas
+INSERT INTO `progression_world`.`creature_loot_template`
+SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE (
+    `entry` IN (
+        15936, -- Heigan the Unclean
+        15954, -- Noth the Plaguebringer
+        16011 -- Loatheb
+    ) AND `item` NOT IN (
+        40752, -- Emblem of Heroism
+        40753, -- Emblem of Valor
+        45624, -- Emblem of Conquest
+        47241 -- Emblem of Triumph
+    )
+);
+
+/*
+24016 = 48000
+24024 = 48001
+30061 = 48002
+30107 = 48003
+30457 = 48004
+30464 = 48005
+30458 = 48006
+30474 = 48007
+30476 = 48008
+*/
+INSERT INTO `progression_world`.`creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
+-- Heigan the Unclean
+(15936, 22726, 0, 30, 0, 1, 0, 1, 1, 'Heigan the Unclean - Splinter of Atiesh', 0, 16),
+(15936, 48004, 48004, 100, 0, 1, 0, 1, 1, 'Heigan the Unclean - (ReferenceTable)', 0, 16),
+(15936, 48006, 48006, 100, 0, 1, 0, 1, 1, 'Heigan the Unclean - (ReferenceTable)', 0, 16),
+-- Noth the Plaguebringer
+(15954, 22726, 0, 30, 0, 1, 0, 1, 1, 'Noth the Plaguebringer - Splinter of Atiesh', 0, 16),
+(15954, 48004, 48004, 100, 0, 1, 0, 1, 1, 'Noth the Plaguebringer - (ReferenceTable)', 0, 16),
+(15954, 48005, 48005, 100, 0, 1, 0, 1, 1, 'Noth the Plaguebringer - (ReferenceTable)', 0, 16),
+-- Loatheb
+(16011, 22726, 0, 30, 0, 1, 0, 1, 1, 'Loatheb - Splinter of Atiesh', 0, 16),
+(16011, 48007, 48007, 100, 0, 1, 0, 2, 2, 'Loatheb - (ReferenceTable)', 0, 16),
+(16011, 48008, 48008, 100, 0, 1, 0, 1, 1, 'Loatheb - (ReferenceTable)', 0, 16),
+-- Stoneskin Gargoyle
+(16168, 5760, 0, 0.2053, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Eternium Lockbox', 0, 16),
+(16168, 7909, 0, 0.2053, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Aquamarine', 0, 16),
+(16168, 7910, 0, 0.2053, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Star Ruby', 0, 16),
+(16168, 12704, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Plans: Thorium Leggings', 0, 16),
+(16168, 12713, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Plans: Radiant Leggings', 0, 16),
+(16168, 12728, 0, 0.05, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Plans: Invulnerable Mail', 0, 16),
+(16168, 12808, 0, 0.8214, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Essence of Undeath', 0, 16),
+(16168, 14489, 0, 0.03, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Pattern: Frostweave Pants', 0, 16),
+(16168, 14498, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Pattern: Runecloth Headband', 0, 16),
+(16168, 14504, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Pattern: Runecloth Shoulders', 0, 16),
+(16168, 14506, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Pattern: Felcloth Robe', 0, 16),
+(16168, 14508, 0, 0.3, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Pattern: Felcloth Shoulders', 0, 16),
+(16168, 16051, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Schematic: Thorium Shells', 0, 16),
+(16168, 16251, 0, 0.06, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Formula: Enchant Bracer - Superior Stamina', 0, 16),
+(16168, 17414, 0, 0.05, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Codex: Prayer of Fortitude II', 0, 16),
+(16168, 17683, 0, 0.08, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Book: Gift of the Wild II', 0, 16),
+(16168, 22373, 0, 24.1273, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Wartorn Leather Scrap', 0, 16),
+(16168, 22374, 0, 14.3737, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Wartorn Chain Scrap', 0, 16),
+(16168, 22375, 0, 21.5606, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Wartorn Plate Scrap', 0, 16),
+(16168, 22376, 0, 35.0103, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Wartorn Cloth Scrap', 0, 16),
+(16168, 22708, 0, 1, 1, 1, 0, 1, 1, 'Stoneskin Gargoyle - Fate of Ramaladni', 0, 16),
+(16168, 22890, 0, 0.3, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Tome of Frost Ward V', 0, 16),
+(16168, 22891, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Grimoire of Shadow Ward IV', 0, 16),
+(16168, 23044, 0, 0.91, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Harbinger of Doom', 0, 16),
+(16168, 23055, 0, 10.5749, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Word of Thawing', 0, 16),
+(16168, 23069, 0, 0.15, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Necro-Knight\'s Garb', 0, 16),
+(16168, 23221, 0, 0.19, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Misplaced Servo Arm', 0, 16),
+(16168, 23226, 0, 0.12, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Ghoul Skin Tunic', 0, 16),
+(16168, 23237, 0, 0.2053, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Ring of the Eternal Flame', 0, 16),
+(16168, 23238, 0, 0.08, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Stygian Buckler', 0, 16),
+(16168, 23663, 0, 0.05, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Girdle of Elemental Fury', 0, 16),
+(16168, 23665, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Leggings of Elemental Fury', 0, 16),
+(16168, 23666, 0, 0.02, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Belt of the Grand Crusader', 0, 16),
+(16168, 23667, 0, 0.308, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Spaulders of the Grand Crusader', 0, 16),
+(16168, 23668, 0, 0.2053, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - Leggings of the Grand Crusader', 0, 16),
+(16168, 48000, 48000, 1, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - (ReferenceTable)', 0, 16),
+(16168, 48002, 48002, 1, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - (ReferenceTable)', 0, 16),
+(16168, 48003, 48003, 1, 0, 1, 0, 1, 1, 'Stoneskin Gargoyle - (ReferenceTable)', 0, 16),
+-- Plague Slime
+(16243, 3671, 0, 9.5455, 0, 1, 0, 1, 1, 'Plague Slime - Lifeless Skull', 0, 16),
+(16243, 3928, 0, 0.18, 0, 1, 0, 1, 1, 'Plague Slime - Superior Healing Potion', 0, 16),
+(16243, 5760, 0, 0.9091, 0, 1, 0, 1, 1, 'Plague Slime - Eternium Lockbox', 0, 16),
+(16243, 7909, 0, 1.06, 0, 1, 0, 1, 1, 'Plague Slime - Aquamarine', 0, 16),
+(16243, 7910, 0, 0.07, 0, 1, 0, 1, 1, 'Plague Slime - Star Ruby', 0, 16),
+(16243, 8846, 0, 0.18, 0, 1, 0, 1, 1, 'Plague Slime - Gromsblood', 0, 16),
+(16243, 14508, 0, 0.13, 0, 1, 0, 1, 1, 'Plague Slime - Pattern: Felcloth Shoulders', 0, 16),
+(16243, 17683, 0, 0.18, 0, 1, 0, 1, 1, 'Plague Slime - Book: Gift of the Wild II', 0, 16),
+(16243, 20763, 0, 27.7273, 0, 1, 0, 1, 1, 'Plague Slime - Broken Weapon', 0, 16),
+(16243, 20768, 0, 4, 0, 1, 0, 1, 1, 'Plague Slime - Oozing Bag', 0, 16),
+(16243, 20770, 0, 22.2727, 0, 1, 0, 1, 1, 'Plague Slime - Bubbling Green Ichor', 0, 16),
+(16243, 22373, 0, 19.0909, 0, 1, 0, 1, 1, 'Plague Slime - Wartorn Leather Scrap', 0, 16),
+(16243, 22374, 0, 11.8182, 0, 1, 0, 1, 1, 'Plague Slime - Wartorn Chain Scrap', 0, 16),
+(16243, 22375, 0, 25, 0, 1, 0, 1, 1, 'Plague Slime - Wartorn Plate Scrap', 0, 16),
+(16243, 22376, 0, 20.4545, 0, 1, 0, 1, 1, 'Plague Slime - Wartorn Cloth Scrap', 0, 16),
+(16243, 22708, 0, 1, 1, 1, 0, 1, 1, 'Plague Slime - Fate of Ramaladni', 0, 16),
+(16243, 22890, 0, 0.07, 0, 1, 0, 1, 1, 'Plague Slime - Tome of Frost Ward V', 0, 16),
+(16243, 23044, 0, 0.07, 0, 1, 0, 1, 1, 'Plague Slime - Harbinger of Doom', 0, 16),
+(16243, 23055, 0, 7.2727, 0, 1, 0, 1, 1, 'Plague Slime - Word of Thawing', 0, 16),
+(16243, 23069, 0, 0.35, 0, 1, 0, 1, 1, 'Plague Slime - Necro-Knight\'s Garb', 0, 16),
+(16243, 23221, 0, 0.13, 0, 1, 0, 1, 1, 'Plague Slime - Misplaced Servo Arm', 0, 16),
+(16243, 23237, 0, 2.7273, 0, 1, 0, 1, 1, 'Plague Slime - Ring of the Eternal Flame', 0, 16),
+(16243, 23238, 0, 0.35, 0, 1, 0, 1, 1, 'Plague Slime - Stygian Buckler', 0, 16),
+(16243, 23666, 0, 0.9091, 0, 1, 0, 1, 1, 'Plague Slime - Belt of the Grand Crusader', 0, 16),
+(16243, 23668, 0, 0.39, 0, 1, 0, 1, 1, 'Plague Slime - Leggings of the Grand Crusader', 0, 16),
+(16243, 48000, 48000, 1, 0, 1, 0, 1, 1, 'Plague Slime - (ReferenceTable)', 0, 16),
+(16243, 48001, 48001, 5, 0, 1, 0, 1, 1, 'Plague Slime - (ReferenceTable)', 0, 16),
+(16243, 48002, 48002, 1, 0, 1, 0, 1, 1, 'Plague Slime - (ReferenceTable)', 0, 16),
+(16243, 48003, 48003, 1, 0, 1, 0, 1, 1, 'Plague Slime - (ReferenceTable)', 0, 16),
+-- Infectious Ghoul
+(16244, 5760, 0, 0.9675, 0, 1, 0, 1, 1, 'Infectious Ghoul - Eternium Lockbox', 0, 16),
+(16244, 7909, 0, 0.088, 0, 1, 0, 1, 1, 'Infectious Ghoul - Aquamarine', 0, 16),
+(16244, 7910, 0, 0.1759, 0, 1, 0, 1, 1, 'Infectious Ghoul - Star Ruby', 0, 16),
+(16244, 12713, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Plans: Radiant Leggings', 0, 16),
+(16244, 12808, 0, 1.4072, 0, 1, 0, 1, 1, 'Infectious Ghoul - Essence of Undeath', 0, 16),
+(16244, 14504, 0, 0.04, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Runecloth Shoulders', 0, 16),
+(16244, 14506, 0, 0.04, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Felcloth Robe', 0, 16),
+(16244, 14508, 0, 0.47, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Felcloth Shoulders', 0, 16),
+(16244, 15755, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Chimeric Vest', 0, 16),
+(16244, 15757, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Wicked Leather Pants', 0, 16),
+(16244, 15765, 0, 0.04, 0, 1, 0, 1, 1, 'Infectious Ghoul - Pattern: Runic Leather Pants', 0, 16),
+(16244, 16251, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Formula: Enchant Bracer - Superior Stamina', 0, 16),
+(16244, 17414, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Codex: Prayer of Fortitude II', 0, 16),
+(16244, 17683, 0, 0.04, 0, 1, 0, 1, 1, 'Infectious Ghoul - Book: Gift of the Wild II', 0, 16),
+(16244, 22373, 0, 24.5383, 0, 1, 0, 1, 1, 'Infectious Ghoul - Wartorn Leather Scrap', 0, 16),
+(16244, 22374, 0, 13.5444, 0, 1, 0, 1, 1, 'Infectious Ghoul - Wartorn Chain Scrap', 0, 16),
+(16244, 22375, 0, 22.5154, 0, 1, 0, 1, 1, 'Infectious Ghoul - Wartorn Plate Scrap', 0, 16),
+(16244, 22376, 0, 30.343, 0, 1, 0, 1, 1, 'Infectious Ghoul - Wartorn Cloth Scrap', 0, 16),
+(16244, 22393, 0, 0.02, 0, 1, 0, 1, 1, 'Infectious Ghoul - Codex: Prayer of Shadow Protection', 0, 16),
+(16244, 22708, 0, 1, 1, 1, 0, 1, 1, 'Infectious Ghoul - Fate of Ramaladni', 0, 16),
+(16244, 22890, 0, 0.16, 0, 1, 0, 1, 1, 'Infectious Ghoul - Tome of Frost Ward V', 0, 16),
+(16244, 23044, 0, 0.62, 0, 1, 0, 1, 1, 'Infectious Ghoul - Harbinger of Doom', 0, 16),
+(16244, 23055, 0, 10.642, 0, 1, 0, 1, 1, 'Infectious Ghoul - Word of Thawing', 0, 16),
+(16244, 23069, 0, 0.78, 0, 1, 0, 1, 1, 'Infectious Ghoul - Necro-Knight\'s Garb', 0, 16),
+(16244, 23221, 0, 0.47, 0, 1, 0, 1, 1, 'Infectious Ghoul - Misplaced Servo Arm', 0, 16),
+(16244, 23226, 0, 0.35, 0, 1, 0, 1, 1, 'Infectious Ghoul - Ghoul Skin Tunic', 0, 16),
+(16244, 23237, 0, 0.7036, 0, 1, 0, 1, 1, 'Infectious Ghoul - Ring of the Eternal Flame', 0, 16),
+(16244, 23238, 0, 0.18, 0, 1, 0, 1, 1, 'Infectious Ghoul - Stygian Buckler', 0, 16),
+(16244, 23666, 0, 0.31, 0, 1, 0, 1, 1, 'Infectious Ghoul - Belt of the Grand Crusader', 0, 16),
+(16244, 23667, 0, 0.21, 0, 1, 0, 1, 1, 'Infectious Ghoul - Spaulders of the Grand Crusader', 0, 16),
+(16244, 23668, 0, 0.09, 0, 1, 0, 1, 1, 'Infectious Ghoul - Leggings of the Grand Crusader', 0, 16),
+(16244, 48000, 48000, 1, 0, 1, 0, 1, 1, 'Infectious Ghoul - (ReferenceTable)', 0, 16),
+(16244, 48002, 48002, 1, 0, 1, 0, 1, 1, 'Infectious Ghoul - (ReferenceTable)', 0, 16),
+(16244, 48003, 48003, 1, 0, 1, 0, 1, 1, 'Infectious Ghoul - (ReferenceTable)', 0, 16);

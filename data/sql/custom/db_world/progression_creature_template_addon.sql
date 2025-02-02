@@ -14,9 +14,11 @@ $$
 DELIMITER ;
 DROP PROCEDURE IF EXISTS AddColumn;
 
-DELETE FROM `creature_template_addon` WHERE `entry` IN (69, 299);
+DELETE FROM `creature_template_addon` WHERE `entry` IN (69, 299, 16244);
 INSERT INTO `creature_template_addon` (`entry`, `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES
 (69, 0, 0, 0, 0, 1, 0, 0, NULL),
 (69, 20, 0, 0, 0, 1, 0, 0, '71764'),
 (299, 0, 0, 0, 0, 1, 0, 0, NULL),
-(299, 20, 0, 0, 0, 1, 0, 0, '71764');
+(299, 20, 0, 0, 0, 1, 0, 0, '71764'),
+(16244, 0, 0, 0, 0, 1, 0, 3, NULL),
+(16244, 17, 0, 0, 0, 0, 0, 3, NULL);

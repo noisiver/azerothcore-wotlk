@@ -19,6 +19,8 @@
 #include "ScriptedCreature.h"
 #include "naxxramas.h"
 
+#include "Progression.h"
+
 enum Says
 {
     SAY_AGGRO                               = 0,
@@ -61,6 +63,7 @@ enum Events
 enum Misc
 {
     NPC_PLAGUED_WARRIOR                     = 16984,
+    NPC_PLAGUED_CONSTRUCT                   = 16982,
     NPC_PLAGUED_CHAMPION                    = 16983,
     NPC_PLAGUED_GUARDIAN                    = 16981
 };
@@ -104,13 +107,33 @@ public:
             me->RemoveUnitFlag(UNIT_FLAG_NOT_SELECTABLE | UNIT_FLAG_DISABLE_MOVE);
             me->SetControlled(false, UNIT_STATE_ROOT);
             events.Reset();
-            events.ScheduleEvent(EVENT_MOVE_TO_BALCONY, 110s);
-            events.ScheduleEvent(EVENT_CURSE, 15s);
-            events.ScheduleEvent(EVENT_SUMMON_PLAGUED_WARRIOR_ANNOUNCE, 10s);
-            if (Is25ManRaid())
+            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
             {
-                events.ScheduleEvent(EVENT_BLINK, 26s);
+                events.ScheduleEvent(EVENT_CURSE, urand(8000, 12000));
+                events.ScheduleEvent(EVENT_BLINK, urand(30000, 40000));
+                switch (timesInBalcony)
+                {
+                case 0:
+                    events.ScheduleEvent(EVENT_MOVE_TO_BALCONY, 90s);
+                    break;
+                case 1:
+                    events.ScheduleEvent(EVENT_MOVE_TO_BALCONY, 110s);
+                    break;
+                default:
+                    events.ScheduleEvent(EVENT_MOVE_TO_BALCONY, 180s);
+                    break;
+                }
             }
+            else
+            {
+                events.ScheduleEvent(EVENT_MOVE_TO_BALCONY, 90s);
+                events.ScheduleEvent(EVENT_CURSE, 15s);
+                if (Is25ManRaid())
+                {
+                    events.ScheduleEvent(EVENT_BLINK, 26s);
+                }
+            }
+            events.ScheduleEvent(EVENT_SUMMON_PLAGUED_WARRIOR_ANNOUNCE, 10s);
         }
 
         void StartBalconyPhase()
@@ -120,8 +143,28 @@ public:
             me->SetUnitFlag(UNIT_FLAG_NOT_SELECTABLE | UNIT_FLAG_DISABLE_MOVE);
             me->SetControlled(true, UNIT_STATE_ROOT);
             events.Reset();
-            events.ScheduleEvent(EVENT_BALCONY_SUMMON_ANNOUNCE, 4s);
-            events.ScheduleEvent(EVENT_MOVE_TO_GROUND, 70s);
+            if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+            {
+                auto first_spawn = urand(5000, 7000);
+                switch (timesInBalcony)
+                {
+                case 0:
+                    events.ScheduleEvent(EVENT_BALCONY_SUMMON_ANNOUNCE, first_spawn + (25000 + urand(0, 5000)));
+                    break;
+                case 1:
+                    events.ScheduleEvent(EVENT_BALCONY_SUMMON_ANNOUNCE, first_spawn + (44000 + urand(0, 5000)));
+                    break;
+                case 2:
+                    events.ScheduleEvent(EVENT_BALCONY_SUMMON_ANNOUNCE, first_spawn + (57000 + urand(0, 5000)));
+                    break;
+                }
+                events.ScheduleEvent(EVENT_MOVE_TO_GROUND, 70000 + (70 + 25 * timesInBalcony));
+            }
+            else
+            {
+                events.ScheduleEvent(EVENT_BALCONY_SUMMON_ANNOUNCE, 4s);
+                events.ScheduleEvent(EVENT_MOVE_TO_GROUND, 70s);
+            }
         }
 
         void SummonHelper(uint32 entry, uint32 count)
@@ -234,9 +277,17 @@ public:
                 case EVENT_CURSE:
                     if (events.GetPhaseMask() == 0)
                     {
-                        me->CastCustomSpell(RAID_MODE(SPELL_CURSE_OF_THE_PLAGUEBRINGER_10, SPELL_CURSE_OF_THE_PLAGUEBRINGER_25), SPELLVALUE_MAX_TARGETS, RAID_MODE(3, 10), me, false);
+                        if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                        {
+                            me->CastCustomSpell(SPELL_CURSE_OF_THE_PLAGUEBRINGER_10, SPELLVALUE_MAX_TARGETS, 20, me, false);
+                            events.RepeatEvent(urand(50000, 60000));
+                        }
+                        else
+                        {
+                            me->CastCustomSpell(RAID_MODE(SPELL_CURSE_OF_THE_PLAGUEBRINGER_10, SPELL_CURSE_OF_THE_PLAGUEBRINGER_25), SPELLVALUE_MAX_TARGETS, RAID_MODE(3, 10), me, false);
+                            events.Repeat(25s);
+                        }
                     }
-                    events.Repeat(25s);
                     break;
                 case EVENT_SUMMON_PLAGUED_WARRIOR_ANNOUNCE:
                     Talk(SAY_SUMMON);
@@ -246,7 +297,14 @@ public:
                     break;
                 case EVENT_SUMMON_PLAGUED_WARRIOR_REAL:
                     me->CastSpell(me, SPELL_SUMMON_PLAGUED_WARRIORS, true);
-                    SummonHelper(NPC_PLAGUED_WARRIOR, RAID_MODE(2, 3));
+                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                    {
+                        SummonHelper(NPC_PLAGUED_WARRIOR, 3);
+                    }
+                    else
+                    {
+                        SummonHelper(NPC_PLAGUED_WARRIOR, RAID_MODE(2, 3));
+                    }
                     break;
                 case EVENT_MOVE_TO_BALCONY:
                     Talk(EMOTE_TELEPORT_BALCONY);
@@ -255,10 +313,17 @@ public:
                     break;
                 case EVENT_BLINK:
                     DoResetThreatList();
-                    me->CastSpell(me, RAID_MODE(SPELL_CRIPPLE_10, SPELL_CRIPPLE_25), false);
+                    if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                    {
+                        me->CastSpell(me, SPELL_CRIPPLE_10, false);
+                    }
+                    else
+                    {
+                        me->CastSpell(me, RAID_MODE(SPELL_CRIPPLE_10, SPELL_CRIPPLE_25), false);
+                    }
                     me->CastSpell(me, SPELL_BLINK, true);
                     Talk(EMOTE_BLINK);
-                    events.Repeat(30s);
+                    events.RepeatEvent(sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM ? urand(30000, 40000) : 30000);
                     break;
                 // BALCONY
                 case EVENT_BALCONY_SUMMON_ANNOUNCE:
@@ -271,14 +336,38 @@ public:
                     switch (timesInBalcony)
                     {
                          case 0:
-                             SummonHelper(NPC_PLAGUED_CHAMPION, RAID_MODE(2, 4));
+                             if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                             {
+                                 SummonHelper(NPC_PLAGUED_CHAMPION, 4);
+                             }
+                             else
+                             {
+                                 SummonHelper(NPC_PLAGUED_CHAMPION, RAID_MODE(2, 4));
+                             }
                              break;
                          case 1:
-                             SummonHelper(NPC_PLAGUED_CHAMPION, RAID_MODE(1, 2));
-                             SummonHelper(NPC_PLAGUED_GUARDIAN, RAID_MODE(1, 2));
+                             if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                             {
+                                 SummonHelper(NPC_PLAGUED_CHAMPION, 4);
+                                 SummonHelper(NPC_PLAGUED_GUARDIAN, 2);
+                             }
+                             else
+                             {
+                                 SummonHelper(NPC_PLAGUED_CHAMPION, RAID_MODE(1, 2));
+                                 SummonHelper(NPC_PLAGUED_GUARDIAN, RAID_MODE(1, 2));
+                             }
                              break;
                          default:
-                             SummonHelper(NPC_PLAGUED_GUARDIAN, RAID_MODE(2, 4));
+                             if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+                             {
+                                 SummonHelper(NPC_PLAGUED_CHAMPION, 4);
+                                 SummonHelper(NPC_PLAGUED_GUARDIAN, 2);
+                                 SummonHelper(NPC_PLAGUED_CONSTRUCT, 3);
+                             }
+                             else
+                             {
+                                 SummonHelper(NPC_PLAGUED_GUARDIAN, RAID_MODE(2, 4));
+                             }
                              break;
                     }
                     break;
@@ -286,7 +375,7 @@ public:
                     Talk(EMOTE_TELEPORT_BACK);
                     me->CastSpell(me, SPELL_TELEPORT_BACK, true);
                     timesInBalcony++;
-                    if (timesInBalcony == 3)
+                    if (timesInBalcony == 3 && sProgression->GetPatchId() >= PATCH_ECHOES_OF_DOOM)
                     {
                         DoCastSelf(SPELL_BERSERK);
                     }
