@@ -315,10 +315,7 @@ SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `pha
     34137, -- Archery Target
     34138, -- Archery Target
     34139, -- Archery Target
-    65613, -- Riding White Stallion
-    96656, -- Shattered Sun Marksman
-    96657, -- Shattered Sun Marksman
-    96658 -- Shattered Sun Marksman
+    65613 -- Riding White Stallion
 ) UNION SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, 15 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature` WHERE `id1` IN (
     23567, -- Inspector Tarem
     23570, -- Gizzix Grimegurgle
