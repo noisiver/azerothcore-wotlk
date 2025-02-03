@@ -21,6 +21,7 @@ ENGINE=InnoDB;
 INSERT INTO `progression_world`.`creature_loot_template`
 SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_loot_template` WHERE `Item`=47241 AND `Entry` IN (
     10184, -- Onyxia
+    12129, -- Onyxian Warder
     15928, -- Thaddius
     15931, -- Grobbulus
     15932, -- Gluth

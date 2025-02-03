@@ -25,6 +25,9 @@ SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `Gro
     47241 -- Emblem of Triumph
 ) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 19 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry` IN (
     34000 -- Onyxia
+) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 17 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Entry` IN (
+    34041, -- Heigan the Unclean
+    34042 -- Noth the Plaguebringer
 ) UNION SELECT `Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, 6 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`reference_loot_template` WHERE `Item` IN (
     19803, -- Brownell's Blue Striped Racer
     19805, -- Keefer's Angelfish

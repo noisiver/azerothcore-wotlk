@@ -20,6 +20,7 @@ DELETE FROM `reference_loot_template` WHERE `Entry` BETWEEN 48000 AND 48008;
 DELETE FROM `reference_loot_template` WHERE `Entry`=34349 AND `Item` IN (45624, 47241);
 DELETE FROM `reference_loot_template` WHERE `Entry`=34000;
 DELETE FROM `reference_loot_template` WHERE `Item` IN (17413, 17414, 17682, 17683, 18600, 19803, 19805, 19806, 19807, 19808, 50289);
+DELETE FROM `reference_loot_template` WHERE `Entry` IN (34041, 34042);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`, `MinPatch`, `MaxPatch`) VALUES
 (11019, 50289, 0, 0.05, 0, 1, 1, 1, 1, 'Blacktip Shark', 20, 21),
 (11020, 50289, 0, 0.05, 0, 1, 1, 1, 1, 'Blacktip Shark', 20, 21),
@@ -74,6 +75,26 @@ INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `
 (34002, 17682, 0, 0, 0, 1, 1, 1, 1, 'Book: Gift of the Wild', 1, 21),
 (34002, 17683, 0, 0, 0, 1, 1, 1, 1, 'Book: Gift of the Wild II', 1, 21),
 (34002, 18600, 0, 0, 0, 1, 1, 1, 1, 'Tome of Arcane Brilliance', 1, 21),
+(34041, 39245, 0, 0, 0, 1, 1, 1, 1, 'Demise', 17, 21),
+(34041, 39246, 0, 0, 0, 1, 1, 1, 1, 'Amulet of Autopsy', 17, 21),
+(34041, 39247, 0, 0, 0, 1, 1, 1, 1, 'Cuffs of Dark Shadows', 17, 21),
+(34041, 39248, 0, 0, 0, 1, 1, 1, 1, 'Tunic of the Lost Pack', 17, 21),
+(34041, 39249, 0, 0, 0, 1, 1, 1, 1, 'Shoulderplates of Bloodshed', 17, 21),
+(34041, 39250, 0, 0, 0, 1, 1, 1, 1, 'Ring of Holy Cleansing', 17, 21),
+(34041, 39251, 0, 0, 0, 1, 1, 1, 1, 'Necrogenic Belt', 17, 21),
+(34041, 39252, 0, 0, 0, 1, 1, 1, 1, 'Preceptor\'s Bindings', 17, 21),
+(34041, 39254, 0, 0, 0, 1, 1, 1, 1, 'Saltarello Shoes', 17, 21),
+(34041, 39255, 0, 0, 0, 1, 1, 1, 1, 'Staff of the Plague Beast', 17, 21),
+(34042, 39234, 0, 0, 0, 1, 1, 1, 1, 'Plague-Impervious Boots', 17, 21),
+(34042, 39235, 0, 0, 0, 1, 1, 1, 1, 'Bone-Framed Bracers', 17, 21),
+(34042, 39236, 0, 0, 0, 1, 1, 1, 1, 'Trespasser\'s Boots', 17, 21),
+(34042, 39237, 0, 0, 0, 1, 1, 1, 1, 'Spaulders of Resumed Battle', 17, 21),
+(34042, 39239, 0, 0, 0, 1, 1, 1, 1, 'Chestplate of the Risen Soldier', 17, 21),
+(34042, 39240, 0, 0, 0, 1, 1, 1, 1, 'Noth\'s Curse', 17, 21),
+(34042, 39241, 0, 0, 0, 1, 1, 1, 1, 'Dark Shroud of the Scourge', 17, 21),
+(34042, 39242, 0, 0, 0, 1, 1, 1, 1, 'Robes of Hoarse Breaths', 17, 21),
+(34042, 39243, 0, 0, 0, 1, 1, 1, 1, 'Handgrips of the Foredoomed', 17, 21),
+(34042, 39244, 0, 0, 0, 1, 1, 1, 1, 'Ring of the Fated', 17, 21),
 (34349, 45624, 0, 100, 0, 1, 0, 1, 1, 'Emblem of Triumph', 0, 19),
 (34349, 47241, 0, 100, 0, 1, 0, 1, 1, 'Emblem of Triumph', 20, 21),
 (46000, 16900, 0, 0, 0, 1, 1, 1, 1, 'Stormrage Cover', 0, 18),

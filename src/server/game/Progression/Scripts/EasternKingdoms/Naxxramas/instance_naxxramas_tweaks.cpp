@@ -11,7 +11,7 @@ public:
     {
         switch (spellInfo->Id)
         {
-        case 29204: // (Loatheb)
+        case 29204: // Inevitable Doom (Loatheb)
             spellInfo->Effects[EFFECT_0].BasePoints = 2549 * 0.8f;
             break;
         case 29214: // Wrath of the Plaguebringer (Noth the Plaguebringer)
@@ -24,7 +24,7 @@ public:
             spellInfo->Effects[EFFECT_1].BasePoints = 129;
             spellInfo->Effects[EFFECT_1].DieSides = 21;
             break;
-        case 29371: // Eruption (Heigan the Unclean
+        case 29371: // Eruption (Heigan the Unclean)
             spellInfo->Effects[EFFECT_0].BasePoints = 3499 * 0.8f;
             spellInfo->Effects[EFFECT_0].DieSides = 1001;
             break;
