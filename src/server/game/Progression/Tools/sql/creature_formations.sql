@@ -16,10 +16,10 @@ COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB;
 
 INSERT INTO `progression_world`.`creature_formations`
-SELECT `leaderGUID`, `memberGUID`, `dist`, `angle`, `groupAI`, `point_1`, `point_2`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_formations` f LEFT OUTER JOIN `creature` c ON c.`guid` = f.`leaderGUID` WHERE c.`id1` IN (
+SELECT `leaderGUID`, `memberGUID`, `dist`, `angle`, `groupAI`, `point_1`, `point_2`, 20 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_formations` f LEFT OUTER JOIN `base_world`.`creature` c ON c.`guid` = f.`leaderGUID` WHERE c.`id1` IN (
     37967, -- Ebon Blade Commander
     38493 -- Argent Crusader
-) UNION SELECT `leaderGUID`, `memberGUID`, `dist`, `angle`, `groupAI`, `point_1`, `point_2`, 4 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_formations` f LEFT OUTER JOIN `creature` c ON c.`guid` = f.`leaderGUID` WHERE c.`id1` IN (
+) UNION SELECT `leaderGUID`, `memberGUID`, `dist`, `angle`, `groupAI`, `point_1`, `point_2`, 4 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature_formations` f LEFT OUTER JOIN `base_world`.`creature` c ON c.`guid` = f.`leaderGUID` WHERE c.`id1` IN (
     14730 -- Revantusk Watcher
 );
 
