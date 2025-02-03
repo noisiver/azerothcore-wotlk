@@ -714,7 +714,9 @@ void ObjectMgr::LoadCreatureTemplateModels()
     uint32 oldMSTime = getMSTime();
 
     //                                               0           1                  2             3
-    QueryResult result = WorldDatabase.Query("SELECT CreatureID, CreatureDisplayID, DisplayScale, Probability FROM creature_template_model ORDER BY Idx ASC");
+    QueryResult result = WorldDatabase.Query("SELECT CreatureID, CreatureDisplayID, DisplayScale, Probability FROM creature_template_model t1 "
+                                             "WHERE Patch=(SELECT max(Patch) FROM creature_template_model t2 WHERE t1.CreatureID=t2.CreatureID AND t1.Idx=t2.Idx AND Patch <= {}) "
+                                             "ORDER BY Idx ASC", sProgression->GetPatchId());
 
     if (!result)
     {
@@ -2301,6 +2303,42 @@ void ObjectMgr::LoadCreatures()
     } while (result->NextRow());
 
     LOG_INFO("server.loading", ">> Loaded {} Creatures in {} ms", count, GetMSTimeDiffToNow(oldMSTime));
+    LOG_INFO("server.loading", " ");
+}
+
+void ObjectMgr::LoadCreatureSparring()
+{
+    uint32 oldMSTime = getMSTime();
+
+    QueryResult result = WorldDatabase.Query("SELECT GUID, SparringPCT FROM creature_sparring");
+
+    if (!result)
+    {
+        LOG_WARN("server.loading", ">> Loaded 0 sparring data. DB table `creature_sparring` is empty.");
+        LOG_INFO("server.loading", " ");
+        return;
+    }
+
+    uint32 count = 0;
+    do
+    {
+        Field* fields = result->Fetch();
+
+        ObjectGuid::LowType spawnId     = fields[0].Get<uint32>();
+        float sparringHealthPct         = fields[1].Get<float>();
+
+        if (!sObjectMgr->GetCreatureData(spawnId))
+        {
+            LOG_ERROR("sql.sql", "Entry {} has a record in `creature_sparring` but doesn't exist in `creatures` table");
+            continue;
+        }
+
+        _creatureSparringStore[spawnId].push_back(sparringHealthPct);
+
+        ++count;
+    } while (result->NextRow());
+
+    LOG_INFO("server.loading", ">> Loaded {} sparring data in {} ms", count, GetMSTimeDiffToNow(oldMSTime));
     LOG_INFO("server.loading", " ");
 }
 
@@ -6657,7 +6695,7 @@ void ObjectMgr::LoadAreaTriggers()
 
     _areaTriggerStore.clear();
 
-    QueryResult result = WorldDatabase.Query("SELECT entry, map, x, y, z, radius, length, width, height, orientation FROM areatrigger WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT entry, map, x, y, z, radius, length, width, height, orientation FROM areatrigger");
 
     if (!result)
     {
@@ -6708,7 +6746,7 @@ void ObjectMgr::LoadAreaTriggerTeleports()
     _areaTriggerTeleportStore.clear();                                  // need for reload case
 
     //                                               0        1              2                  3                  4                   5
-    QueryResult result = WorldDatabase.Query("SELECT ID,  target_map, target_position_x, target_position_y, target_position_z, target_orientation FROM areatrigger_teleport WHERE {} BETWEEN MinPatch AND MaxPatch", sProgression->GetPatchId());
+    QueryResult result = WorldDatabase.Query("SELECT ID,  target_map, target_position_x, target_position_y, target_position_z, target_orientation FROM areatrigger_teleport");
 
     if (!result)
     {
