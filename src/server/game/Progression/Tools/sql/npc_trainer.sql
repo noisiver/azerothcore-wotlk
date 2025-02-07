@@ -89,7 +89,8 @@ SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`,
     26991, -- Gift of the Wild
     33717, -- Conjure Food
     39374, -- Prayer of Shadow Protection
-    53042 -- Mixology
+    53042, -- Mixology
+    62124 -- Hand of Reckoning
 ) UNION SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, 30 AS `ReqLevel`, `ReqSpell`, 17 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`npc_trainer` WHERE `SpellID` IN (
     1710, -- Summon Felsteed
     13820, -- Summon Warhorse
@@ -143,6 +144,8 @@ SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`,
         66843, -- Call of the Ancestors
         66844 -- Call of the Spirits
     )
+) UNION SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`, 12 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`npc_trainer` WHERE `SpellID` IN (
+    31789 -- Righteous Defense
 ) UNION SELECT `ID`, `SpellID`, 6000000 AS `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, 60 AS `ReqLevel`, `ReqSpell`, 12 AS `MinPatch`, 18 AS `MaxPatch` FROM `base_world`.`npc_trainer` WHERE `SpellID` IN (
     33391 -- Journeyman Riding
 ) UNION SELECT `ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`, 12 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`npc_trainer` WHERE `SpellID` IN (
