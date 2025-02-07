@@ -242,6 +242,25 @@ void Tools::UpdateConfig()
             sWorld->setIntConfig(CONFIG_ICC_BUFF_ALLIANCE, SPELL_ICECROWN_CITADEL_NONE);
         }
     }
+
+    /*
+    float healthMultiplier = 1.0f;
+
+    if (sProgression->GetPatchId() < PATCH_BEFORE_THE_STORM)
+    {
+        healthMultiplier = 1.5f;
+    }
+    else if (sProgression->GetPatchId() < PATCH_ECHOES_OF_DOOM)
+    {
+        healthMultiplier = 1.25f;
+    }
+
+    sWorld->setRate(RATE_CREATURE_NORMAL_HP, healthMultiplier);
+    sWorld->setRate(RATE_CREATURE_ELITE_ELITE_HP, healthMultiplier);
+    sWorld->setRate(RATE_CREATURE_ELITE_RAREELITE_HP, healthMultiplier);
+    sWorld->setRate(RATE_CREATURE_ELITE_WORLDBOSS_HP, healthMultiplier);
+    sWorld->setRate(RATE_CREATURE_ELITE_RARE_HP, healthMultiplier);
+    */
 }
 
 void Tools::OnBattlegroundEndReward(Battleground* bg, Player* player, TeamId winnerTeamId)

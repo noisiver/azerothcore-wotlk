@@ -22,3 +22,13 @@ SELECT `CreatureID`, `Idx`, 20 AS `Patch`, `CreatureDisplayID`, `DisplayScale`, 
 ) UNION SELECT `CreatureID`, `Idx`, 0 AS `Patch`, 604 AS `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID` IN (
     69 -- Diseased Timber Wolf
 );
+
+-- Alterac Valley
+INSERT INTO `progression_world`.`creature_template_model`
+SELECT `CreatureID`, `Idx`, 15 AS `Patch`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID` IN (
+    13145, -- Lieutenant Grummus
+    13146 -- Lieutenant Murp
+) UNION SELECT `CreatureID`, `Idx`, 0 AS `Patch`, `CreatureDisplayID`, 2 AS `DisplayScale`, `Probability`, `VerifiedBuild` FROM `base_world`.`creature_template_model` WHERE `CreatureID` IN (
+    13145, -- Lieutenant Grummus
+    13146 -- Lieutenant Murp
+);
