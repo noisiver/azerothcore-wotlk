@@ -699,3 +699,49 @@ SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`
 ) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, 'Timber Wolf' AS `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
     69 -- Diseased Timber Wolf
 );
+
+-- Alterac Valley
+INSERT INTO `progression_world`.`creature_template`
+SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 15 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13137, -- Lieutenant Rugba
+    13138, -- Lieutenant Spencer
+    13143, -- Lieutenant Stronghoof
+    13144, -- Lieutenant Vol'talar
+    13145, -- Lieutenant Grummus
+    13146, -- Lieutenant Murp
+    13147, -- Lieutenant Lewis
+    13152, -- Commander Malgor
+    13153, -- Commander Mulfort
+    13296, -- Lieutenant Largent
+    13297, -- Lieutenant Stouthandle
+    13298, -- Lieutenant Greywand
+    13299, -- Lieutenant Lonadin
+    13300, -- Lieutenant Mancuso
+    13318, -- Commander Mortimer
+    13319 -- Commander Duffy
+) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 7 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13356, -- Stormpike Mine Layer
+    13357 -- Frostwolf Mine Layer
+) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, 'SmartAI' AS `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13137, -- Lieutenant Rugba
+    13138, -- Lieutenant Spencer
+    13143, -- Lieutenant Stronghoof
+    13144, -- Lieutenant Vol'talar
+    13145, -- Lieutenant Grummus
+    13147, -- Lieutenant Lewis
+    13296, -- Lieutenant Largent
+    13297, -- Lieutenant Stouthandle
+    13298, -- Lieutenant Greywand
+    13299, -- Lieutenant Lonadin
+    13300 -- Lieutenant Mancuso
+) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, 'Lieutenant Murp' AS `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, 'SmartAI' AS `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13146 -- Lieutenant Murp
+) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, 1 AS `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, 'SmartAI' AS `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13356, -- Stormpike Mine Layer
+    13357 -- Frostwolf Mine Layer
+) UNION SELECT `entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, 0 AS `Patch`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, 'npc_alterac_valley_commander' AS `ScriptName`, `VerifiedBuild` FROM `base_world`.`creature_template` WHERE `entry` IN (
+    13152, -- Commander Malgor
+    13153, -- Commander Mulfort
+    13318, -- Commander Mortimer
+    13319 -- Commander Duffy
+);
