@@ -22,16 +22,27 @@ Progression::Progression()
 
 void AddSC_instance_blackrock_spire_progression();
 void AddSC_instance_onyxias_lair_tweaks();
+void AddSC_map_alterac_valley();
+void AddSC_npc_alterac_valley_commander();
 
 void Progression::LoadProgressionScripts()
 {
-    if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_ECHOES_OF_DOOM)
+    uint32 id = sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM);
+
+    if (id < PATCH_ECHOES_OF_DOOM)
     {
         AddSC_instance_blackrock_spire_progression();
     }
 
-    if (sConfigMgr->GetOption<uint32>("Progression.Patch", PATCH_ASSAULT_ON_THE_RUBY_SANCTUM) < PATCH_CALL_OF_THE_CRUSADE)
+    if (id < PATCH_CALL_OF_THE_CRUSADE)
     {
         AddSC_instance_onyxias_lair_tweaks();
+    }
+
+    AddSC_map_alterac_valley();
+
+    if (id < PATCH_THE_GODS_OF_ZUL_AMAN)
+    {
+        AddSC_npc_alterac_valley_commander();
     }
 }

@@ -15,8 +15,13 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS AddColumn;
 
 DELETE FROM `creature_template_model` WHERE `CreatureID` IN (69, 299);
+DELETE FROM `creature_template_model` WHERE `CreatureID` IN (13145, 13146);
 INSERT INTO `creature_template_model` (`CreatureID`, `Idx`, `Patch`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild`) VALUES
 (69, 0, 0, 604, 1, 1, 12340),
 (69, 0, 20, 31048, 1, 1, 12340),
 (299, 0, 0, 447, 1, 1, 12340),
-(299, 0, 20, 31049, 1, 1, 12340);
+(299, 0, 20, 31049, 1, 1, 12340),
+(13145, 0, 0, 7864, 2, 1, 12340),
+(13145, 0, 15, 7864, 1, 1, 12340),
+(13146, 0, 0, 1693, 2, 1, 12340),
+(13146, 0, 15, 1693, 1, 1, 12340);

@@ -22,3 +22,20 @@ SELECT `entry`, 20 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, 
     69, -- Diseased Timber Wolf
     299 -- Diseased Young Wolf
 );
+
+-- Alterac Valley
+INSERT INTO `progression_world`.`creature_template_addon`
+SELECT `entry`, 15 AS `Patch`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    13297, -- Lieutenant Stouthandle
+    13299, -- Lieutenant Lonadin
+    13318, -- Commander Mortimer
+    13300 -- Lieutenant Mancuso
+) UNION SELECT `entry`, 0 AS `Patch`, 5800000 AS `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    13318 -- Commander Mortimer
+) UNION SELECT `entry`, 0 AS `Patch`, 5800048 AS `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    13299 -- Lieutenant Lonadin
+) UNION SELECT `entry`, 0 AS `Patch`, 5800050 AS `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    13297 -- Lieutenant Stouthandle
+) UNION SELECT `entry`, 0 AS `Patch`, 5800076 AS `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras` FROM `base_world`.`creature_template_addon` WHERE `entry` IN (
+    13300 -- Lieutenant Mancuso
+);

@@ -16,6 +16,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS AddColumn;
 
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (-246915, -246904, -209026, -209025, -209024, -209023, -209022, -209021, -209020, -209019, -96612, -96611, -96610, -96604, -96603, -96600, -96596, -96595, -88792, -88791, -88790, -88789, -88788, -88787, -88786, -88785, -88784, -88783, -88782, -88781, -88780, -88779, 1748);
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (13137, 13138, 13143, 13144, 13145, 13146, 13147, 13296, 13297, 13298, 13299, 13300, 13356, 13357, 13448);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`, `MinPatch`, `MaxPatch`) VALUES
 (-246915, 0, 0, 0, 60, 0, 100, 512, 180000, 180000, 180000, 180000, 0, 0, 80, 3849301, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Argent Cruasder - On Update - Run Script', 20, 21),
 (-246915, 0, 1, 2, 17, 0, 100, 512, 0, 0, 0, 0, 0, 0, 45, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Argent Cruasder - Just Summoned - Set Data', 20, 21),
@@ -57,4 +58,21 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (1748, 0, 1, 0, 2, 0, 100, 0, 1, 90, 60000, 120000, 0, 0, 11, 15062, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Shield Wall at 1-90%', 0, 16),
 (1748, 0, 2, 0, 4, 0, 100, 1, 0, 0, 0, 0, 0, 0, 11, 8990, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Retribution Aura On Aggro', 0, 16),
 (1748, 0, 3, 0, 0, 0, 100, 0, 3000, 9000, 6000, 12000, 0, 0, 11, 20684, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Cleave', 0, 16),
-(1748, 0, 4, 0, 0, 0, 100, 0, 5000, 15000, 20000, 40000, 0, 0, 11, 20683, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Highlord\'s Justice', 0, 16);
+(1748, 0, 4, 0, 0, 0, 100, 0, 5000, 15000, 20000, 40000, 0, 0, 11, 20683, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Highlord Bolvar Fordragon - Cast Highlord\'s Justice', 0, 16),
+(13137, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Rugba - In Combat - Cast Mortal Strike', 0, 14),
+(13138, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Spencer - In Combat - Cast Mortal Strike', 0, 14),
+(13143, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Stronghoof - In Combat - Cast Mortal Strike', 0, 14),
+(13144, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Vol\'talar - In Combat - Cast Mortal Strike', 0, 14),
+(13145, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Grummus - In Combat - Cast Mortal Strike', 0, 14),
+(13146, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Murp - In Combat - Cast Mortal Strike', 0, 14),
+(13147, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Lewis - In Combat - Cast Mortal Strike', 0, 14),
+(13296, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Largent - In Combat - Cast Mortal Strike', 0, 14),
+(13297, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Stouthandle - In Combat - Cast Mortal Strike', 0, 14),
+(13298, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Greywand - In Combat - Cast Mortal Strike', 0, 14),
+(13299, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Lonadin - In Combat - Cast Mortal Strike', 0, 14),
+(13300, 0, 0, 0, 0, 0, 100, 0, 5000, 5000, 7000, 9000, 0, 0, 11, 15708, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Lieutenant Mancuso - In Combat - Cast Mortal Strike', 0, 14),
+(13356, 0, 0, 0, 0, 0, 100, 0, 2700, 2700, 7500, 7500, 0, 0, 11, 29419, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Stormpike Mine Layer - In Combat - Cast Flash Bomb', 0, 6),
+(13356, 0, 1, 0, 0, 0, 100, 0, 5000, 5000, 7500, 7500, 0, 0, 11, 9143, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Stormpike Mine Layer - In Combat - Cast Bomb', 0, 6),
+(13357, 0, 0, 0, 0, 0, 100, 0, 2700, 2700, 7500, 7500, 0, 0, 11, 29419, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Stormpike Mine Layer - In Combat - Cast Flash Bomb', 0, 6),
+(13357, 0, 1, 0, 0, 0, 100, 0, 5000, 5000, 7500, 7500, 0, 0, 11, 9143, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Stormpike Mine Layer - In Combat - Cast Bomb', 0, 6),
+(13448, 0, 0, 0, 0, 0, 100, 0, 9000, 13000, 18000, 34000, 0, 0, 11, 11977, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Sergeant Yazra Bloodsnarl - In Combat - Cast \'Rend\' (Normal Dungeon)', 0, 21);
