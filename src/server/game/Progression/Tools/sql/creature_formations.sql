@@ -149,7 +149,7 @@ INSERT INTO `creature_formations` (`leaderGUID`, `memberGUID`, `dist`, `angle`, 
 (5800148, 5800148, 0, 0, 3, 0, 0, 0, 9), -- Frostwolf Legionnaire
 (5800148, 5800149, 2, 135, 515, 0, 0, 0, 9), -- Frostwolf Bloodhound
 (5800148, 5800150, 2, 225, 515, 0, 0, 0, 9), -- Frostwolf Bloodhound
-(5800152, 5800152, 0, 0, 3, 0, 0, 0, 21), -- Frostwolf Legionnaire
+(5800152, 5800152, 0, 0, 3, 0, 0, 0, 9), -- Frostwolf Legionnaire
 (5800152, 5800153, 2, 135, 515, 0, 0, 0, 9), -- Frostwolf Bloodhound
 (5800152, 5800154, 2, 225, 515, 0, 0, 0, 9), -- Frostwolf Bloodhound
 -- Lieutenant Vol'talar
