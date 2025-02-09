@@ -23,6 +23,7 @@
 #include "GameObject.h"
 #include "ObjectMgr.h"
 #include "Player.h"
+#include "Progression.h"
 #include "SpellAuras.h"
 #include "WorldPacket.h"
 
@@ -45,7 +46,7 @@ BattlegroundAV::BattlegroundAV()
     {
         for (uint8 j = 0; j < 9; j++)
             m_Team_QuestStatus[i][j] = 0;
-        m_Team_Scores[i] = 0;
+        m_Team_Scores[i] = sProgression->GetPatchId() > PATCH_DRUMS_OF_WAR ? BG_AV_SCORE_INITIAL_POINTS : BG_AV_SCORE_INITIAL_POINTS * 3;
         m_IsInformedNearVictory[i] = false;
         m_CaptainAlive[i] = true;
         m_CaptainBuffTimer[i] = 0;
