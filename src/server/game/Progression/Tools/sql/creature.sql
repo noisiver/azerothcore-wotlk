@@ -451,6 +451,8 @@ SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `pha
     18255, -- Apprentice Darius
     19848, -- Harbinger Ennarth
     19850, -- Councilor Arial D'Anastasis
+    19859, -- Max Luna <Arena Battlemaster>
+    19861, -- Bip Nigstrom <Arena Organizer>
     19909, -- Rex Pixem <Arena Battlemaster>
     19911, -- Beka Zipwhistle <Arena Battlemaster>
     21448, -- Gadgetzan Sniper
