@@ -290,7 +290,6 @@ SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `pha
     203495 -- Orgrimmar Grunt
 ) UNION SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`, 16 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`creature` WHERE `id1` IN (
     19202, -- Emissary Mordin
-    24932, -- Exarch Nasuun
     25134, -- Shattered Sun Trainee
     25135, -- Shattered Sun Trainee
     25136, -- Shattered Sun Trainee
@@ -304,8 +303,6 @@ SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `pha
     25155, -- Shattered Sun Cleric
     25167, -- General Tiras'alan
     25885, -- Whirligig Wafflefry <Gnomish Inventor>
-    27666, -- Ontuvo <Jewelcrafting Supplies>
-    27667, -- Anwehu <Weapons & Armorsmith>
     27703, -- Ysuria <Portal Trainer>
     27705, -- Lorrin Foxfire<Portal Trainer>
     28126, -- Don Carlos
@@ -451,6 +448,8 @@ SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `pha
     18255, -- Apprentice Darius
     19848, -- Harbinger Ennarth
     19850, -- Councilor Arial D'Anastasis
+    19859, -- Max Luna <Arena Battlemaster>
+    19861, -- Bip Nigstrom <Arena Organizer>
     19909, -- Rex Pixem <Arena Battlemaster>
     19911, -- Beka Zipwhistle <Arena Battlemaster>
     21448, -- Gadgetzan Sniper

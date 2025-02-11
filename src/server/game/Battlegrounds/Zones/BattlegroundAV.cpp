@@ -23,6 +23,7 @@
 #include "GameObject.h"
 #include "ObjectMgr.h"
 #include "Player.h"
+#include "Progression.h"
 #include "SpellAuras.h"
 #include "WorldPacket.h"
 
@@ -1763,7 +1764,7 @@ void BattlegroundAV::ResetBGSubclass()
     {
         for (uint8 j = 0; j < 9; j++)
             m_Team_QuestStatus[i][j] = 0;
-        m_Team_Scores[i] = BG_AV_SCORE_INITIAL_POINTS;
+        m_Team_Scores[i] = sProgression->GetPatchId() >= PATCH_THE_GODS_OF_ZUL_AMAN ? BG_AV_SCORE_INITIAL_POINTS : BG_AV_SCORE_INITIAL_POINTS * 5;
         m_IsInformedNearVictory[i] = false;
         m_CaptainAlive[i] = true;
         m_CaptainBuffTimer[i] = 120000 + urand(0, 4) * 60; //as far as i could see, the buff is randomly so i make 2minutes (thats the duration of the buff itself) + 0-4minutes TODO get the right times
