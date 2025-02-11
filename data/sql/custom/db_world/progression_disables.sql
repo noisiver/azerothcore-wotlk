@@ -19,7 +19,7 @@ DELETE FROM `disables` WHERE `sourceType`=1 AND `entry` IN (550, 3631, 4487, 448
 DELETE FROM `disables` WHERE `sourceType`=2 AND `entry` IN (269, 309, 349, 429, 469, 509, 531, 532, 533, 534, 540, 542, 543, 544, 545, 546, 547, 548, 550, 552, 553, 554, 555, 556, 557, 558, 560, 564, 565, 568, 574, 575, 576, 578, 580, 585, 595, 599, 600, 601, 602, 603, 604, 608, 615, 616, 619, 624, 631, 632, 649, 650, 658, 668, 724);
 DELETE FROM `disables` WHERE `sourceType`=3 AND `entry` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 30, 32);
 DELETE FROM `disables` WHERE `sourceType`=5 AND `entry` IN (1, 2, 3, 4, 5, 6, 7);
-DELETE FROM `disables` WHERE `sourceType`=9 AND `entry` IN (1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 26, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 70, 71, 76, 77, 90);
+DELETE FROM `disables` WHERE `sourceType`=9 AND `entry` IN (1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 26, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 70, 71, 76, 77, 90, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115);
 INSERT INTO `disables` (`sourceType`, `entry`, `flags`, `params_0`, `params_1`, `comment`, `MinPatch`, `MaxPatch`) VALUES
 (1, 550, 0, '', '', 'Deprecated quest: Battle of Hillsbrad', 20, 21),
 (1, 3631, 0, '', '', 'Deprecated quest: Summon Felsteed', 17, 21),
@@ -158,4 +158,19 @@ INSERT INTO `disables` (`sourceType`, `entry`, `flags`, `params_0`, `params_1`, 
 (9, 71, 0, '', '', 'Darkmoon Faire Building (Mulgore, 0, XXX)', 0, 4),
 (9, 76, 0, '', '', 'Arena Season 2', 0, 12),
 (9, 77, 0, '', '', 'Darkmoon Faire Building (Terokkar Forest, 0, XXX)', 0, 4),
-(9, 90, 0, '', '', 'Stranglethorn Fishing Extravaganza - Turn-ins', 0, 5);
+(9, 90, 0, '', '', 'Stranglethorn Fishing Extravaganza - Turn-ins', 0, 5),
+(9, 101, 0, '', '', 'Sun\'s Reach Reclamation Phase 1', 0, 15),
+(9, 102, 0, '', '', 'Sun\'s Reach Reclamation Phase 2 Only', 0, 15),
+(9, 103, 0, '', '', 'Sun\'s Reach Reclamation Phase 2 Permanent', 0, 15),
+(9, 104, 0, '', '', 'Sun\'s Reach Reclamation Phase No Portal', 0, 15),
+(9, 105, 0, '', '', 'Sun\'s Reach Reclamation Phase Portal', 0, 15),
+(9, 106, 0, '', '', 'Sun\'s Reach Reclamation Phase 3 Only', 0, 15),
+(9, 107, 0, '', '', 'Sun\'s Reach Reclamation Phase 3 Permanent', 0, 15),
+(9, 108, 0, '', '', 'Sun\'s Reach Reclamation Phase No Anvil', 0, 15),
+(9, 109, 0, '', '', 'Sun\'s Reach Reclamation Phase Anvil', 0, 15),
+(9, 110, 0, '', '', 'Sun\'s Reach Reclamation Phase 4', 0, 15),
+(9, 111, 0, '', '', 'Sun\'s Reach Reclamation Phase No Monument', 0, 15),
+(9, 112, 0, '', '', 'Sun\'s Reach Reclamation Phase Monument', 0, 15),
+(9, 113, 0, '', '', 'Sun\'s Reach Reclamation Phase No Alchemy Lab', 0, 15),
+(9, 114, 0, '', '', 'Sun\'s Reach Reclamation Phase Alchemy Lab', 0, 15),
+(9, 115, 0, '', '', 'Sun\'s Reach Reclamation Phase K\'iru', 0, 15);

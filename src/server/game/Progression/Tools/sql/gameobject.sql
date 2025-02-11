@@ -140,8 +140,7 @@ SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `posit
 ) UNION SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`, 17 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject` WHERE `id` IN (
     180718 -- The Scarab Gong
 ) UNION SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`, 16 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject` WHERE `id` IN (
-    183435, -- Marksman Regiment's Cooking Pot
-    187056 -- Shattrath Portal to Isle of Quel'Danas
+    183435 -- Marksman Regiment's Cooking Pot
 ) UNION SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`, 15 AS `MinPatch`, 21 AS `MaxPatch` FROM `base_world`.`gameobject` WHERE `id` IN (
     186230, -- Mailbox
     186231, -- Forge
